@@ -12,16 +12,21 @@ public class WallpService {
     private Context context;
     public static Pic picResult;
     private AsyncResponse output;
-    public WallpService( NetworkUtilities networkUtilities,Context context,AsyncResponse output){
+    private int index;
+
+    public WallpService( NetworkUtilities networkUtilities,Context context,AsyncResponse output,int index){
         this.networkUtilities=networkUtilities;
         this.context=context;
         this.output=output;
+        this.index=index;
     }
 
     public void loadWallp(){
-        FetchWallpTask fwt= new FetchWallpTask(context,networkUtilities,output);
-        fwt.progressDialog.show();
-        fwt.execute();
+        if(networkUtilities.isInternetConnectionPresent()) {
+            FetchWallpTask fwt = new FetchWallpTask(context, networkUtilities, output,index);
+//            fwt.progressDialog.show();
+            fwt.execute();
+        }
 
     }
 

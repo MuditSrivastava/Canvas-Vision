@@ -1,14 +1,8 @@
 package com.example.android.capstone;
 
-import android.app.ActionBar;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -40,9 +34,8 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewPager);
-        NetworkUtilities networkUtilities = new NetworkUtilities(this);
         viewPager.setAdapter(new PagerAdapter(getSupportFragmentManager(),
-                MainActivity.this,networkUtilities));
+                MainActivity.this));
 
         // Give the TabLayout the ViewPager
         TabLayout tabLayout = (TabLayout) findViewById(R.id.sliding_tabs);

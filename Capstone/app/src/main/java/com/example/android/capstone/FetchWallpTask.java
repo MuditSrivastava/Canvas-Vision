@@ -25,15 +25,17 @@ public class FetchWallpTask extends AsyncTask <Void,Void,Pic> {
     private Context context;
     public ProgressDialog progressDialog;
     private AsyncResponse output;
+    private int index;
 
 
 
-    public FetchWallpTask(Context context,NetworkUtilities networkUtilities,AsyncResponse output){
+    public FetchWallpTask(Context context,NetworkUtilities networkUtilities,AsyncResponse output,int index){
 
         this.context=context;
         this.networkUtilities=networkUtilities;
         this.progressDialog = new ProgressDialog(context);
         this.output=output;
+        this.index=index;
     }
 
 
@@ -66,7 +68,7 @@ public class FetchWallpTask extends AsyncTask <Void,Void,Pic> {
 
         ApiService client = retrofit.create(ApiService.class);
 
-        Call<Pic> call = client.getLatestPic();
+        Call<Pic> call = client.getLatestPic(index);
 
         call.enqueue(new Callback<Pic>() {
             @Override

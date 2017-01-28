@@ -1,0 +1,12 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F7F7F7"
+    android:id="@+id/nofrag">
+    <ImageView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/noic"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:adjustViewBounds="true"
+        android:src="@drawable/noic"/>
+</FrameLayout>

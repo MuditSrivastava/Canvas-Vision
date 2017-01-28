@@ -23,6 +23,8 @@ public class WallpAdapter extends RecyclerView.Adapter<WallpViewHolder> {
 
     private List<Hit> hit;
     private Context context;
+    public int width;
+    public int height;
 
     public WallpAdapter (Context context){
 
@@ -43,11 +45,9 @@ public class WallpAdapter extends RecyclerView.Adapter<WallpViewHolder> {
 
         Hit photo = hit.get(position);
 
-        // This is how we use Picasso to load images from the internet.
         Picasso.with(context)
                 .load(photo.getWebformatURL())
-                .resize(300,200)
-                .placeholder(R.drawable.ph)
+                .placeholder(R.drawable.plh)
                 .error(R.drawable.phe)
                 .into(holder.discWallp);
     }
@@ -60,7 +60,7 @@ public class WallpAdapter extends RecyclerView.Adapter<WallpViewHolder> {
 
     public void setPicList(Pic picList)
     {
-        this.hit.clear();
+       // this.hit.clear();
         if(picList.getHits()!=null)
             this.hit.addAll(picList.getHits());
         // The adapter needs to know that the data has changed. If we don't call this, app will crash.

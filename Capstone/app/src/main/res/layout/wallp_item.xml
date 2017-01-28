@@ -1,5 +1,8 @@
 <ImageView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/wallpView"
-    android:layout_width="300dp"
-    android:layout_height="200dp"
-    android:adjustViewBounds="true"/>
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scaleType="fitXY"
+    android:adjustViewBounds="true"
+    android:background="@color/colorPrimaryDark"
+    android:padding="2dp" />

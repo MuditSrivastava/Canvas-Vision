@@ -15,12 +15,9 @@ public class PagerAdapter extends FragmentPagerAdapter {
     final int PAGE_COUNT = 2;
     private String tabTitles[] = new String[] { "Discover", "Explore" };
     private Context context;
-    private NetworkUtilities networkUtilities;
-
-    public PagerAdapter(FragmentManager fm, Context context,NetworkUtilities networkUtilities) {
+    public PagerAdapter(FragmentManager fm, Context context) {
         super(fm);
         this.context = context;
-        this.networkUtilities=networkUtilities;
     }
 
     @Override
@@ -30,15 +27,10 @@ public class PagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        if (!networkUtilities.isInternetConnectionPresent()){
-        return NoInternetFragment.newInstance();
-        }
-        else {
             if (position == 0)
                 return DiscoverFragment.newInstance();
             else
                 return ExploreFragment.newInstance();
-        }
     }
 
     @Override
