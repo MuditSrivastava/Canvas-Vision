@@ -1,4 +1,4 @@
-package com.example.android.capstone;
+package com.example.android.capstone.ui.util;
 
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;

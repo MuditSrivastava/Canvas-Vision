@@ -1,4 +1,8 @@
-package com.example.android.capstone;
+package com.example.android.capstone.ui.util;
+
+import android.widget.ImageView;
+
+
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -12,6 +16,8 @@ import static android.R.attr.width;
 
 public class DynamicHeightImageView extends ImageView {
     private float whRatio = 0;
+
+
 
     public DynamicHeightImageView(Context context, AttributeSet attrs) {
         super(context, attrs);

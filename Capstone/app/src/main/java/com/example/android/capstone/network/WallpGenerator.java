@@ -1,4 +1,4 @@
-package com.example.android.capstone;
+package com.example.android.capstone.network;
 
 import okhttp3.OkHttpClient;
 import retrofit2.GsonConverterFactory;

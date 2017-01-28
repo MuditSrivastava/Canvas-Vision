@@ -1,9 +1,16 @@
-package com.example.android.capstone;
+package com.example.android.capstone.ui.adapter;
+
+import android.support.v4.app.FragmentPagerAdapter;
+
+
 
 import android.content.Context;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.Fragment;
+
+import com.example.android.capstone.ui.ExploreFragment;
+import com.example.android.capstone.ui.DiscoverFragment;
 
 
 /**
@@ -14,10 +21,9 @@ public class PagerAdapter extends FragmentPagerAdapter {
 
     final int PAGE_COUNT = 2;
     private String tabTitles[] = new String[] { "Discover", "Explore" };
-    private Context context;
-    public PagerAdapter(FragmentManager fm, Context context) {
+    public PagerAdapter(FragmentManager fm) {
         super(fm);
-        this.context = context;
+
     }
 
     @Override

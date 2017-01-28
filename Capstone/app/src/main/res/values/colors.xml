@@ -7,5 +7,5 @@
     <color name="colorDetailPrimaryDark">#f1f2f4</color>
     <color name="colorDetailAccent">#DAA520</color>
     <color name="up_button">#d8625e5e</color>
-
+    <color name="scrim_30percent">#4d000000</color>
 </resources>

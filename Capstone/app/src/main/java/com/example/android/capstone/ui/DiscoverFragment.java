@@ -1,4 +1,4 @@
-package com.example.android.capstone;
+package com.example.android.capstone.ui;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,21 +12,28 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+
+import com.example.android.capstone.ui.util.EndlessRecyclerViewScrollListener;
+import com.example.android.capstone.model.Hit;
+import com.example.android.capstone.model.Pic;
+import com.example.android.capstone.network.NetworkUtilities;
+import com.example.android.capstone.network.WallpService;
+import com.example.android.capstone.R;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import static com.example.android.capstone.WallpService.picResult;
+import com.example.android.capstone.ui.adapter.WallpAdapter;
+import com.example.android.capstone.network.AsyncResponse;
 
 
 public class DiscoverFragment extends Fragment implements AsyncResponse {
-    private StaggeredGridLayoutManager staggeredGridLayoutManager;
-    public  WallpAdapter wallpAdapter;
-    public Pic pic ;
+
+    public WallpAdapter wallpAdapter;
     public List<Hit> hit= new ArrayList<>();
     public RecyclerView recyclerView;
     public NetworkUtilities networkUtilities;
-    public  Fragment currentFragment ;
-    private EndlessRecyclerViewScrollListener scrollListener;
+    public EndlessRecyclerViewScrollListener scrollListener;
+    WallpService wallpService;
 
 
     public DiscoverFragment() {
@@ -46,8 +53,6 @@ public class DiscoverFragment extends Fragment implements AsyncResponse {
         super.onCreate(savedInstanceState);
         networkUtilities = new NetworkUtilities(getActivity());
 
-      //  requestDataRefresh();
-
         loadNextDataFromApi(1);
     }
 
@@ -56,16 +61,16 @@ public class DiscoverFragment extends Fragment implements AsyncResponse {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         if(!networkUtilities.isInternetConnectionPresent()){
-            View view = inflater.inflate(R.layout.fragment_no_internet, container, false);
-            return view;
+            return  inflater.inflate(R.layout.fragment_no_internet, container, false);
+
         }
         else{
             View view = inflater.inflate(R.layout.fragment_discover, container, false);
             recyclerView=(RecyclerView) view.findViewById(R.id.discRecView);
             recyclerView.setHasFixedSize(true);
-          //  recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
-            staggeredGridLayoutManager = new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL);
+          StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL);
             recyclerView.setLayoutManager(staggeredGridLayoutManager);
+
             // Retain an instance so that you can call `resetState()` for fresh searches
             scrollListener = new EndlessRecyclerViewScrollListener(staggeredGridLayoutManager) {
                 @Override
@@ -75,16 +80,11 @@ public class DiscoverFragment extends Fragment implements AsyncResponse {
                     loadNextDataFromApi(page);
                 }
             };
+
+            scrollListener.resetState();
             // Adds the scroll listener to RecyclerView
             recyclerView.addOnScrollListener(scrollListener);
-       /*     for(int i=0;i<30;i++) {
-                hit.add(new Hit());
-            }
-            pic= new Pic();*/
-            wallpAdapter = new WallpAdapter(getActivity());
-            //pic.setHits(hit);
-           // wallpAdapter.setPicList(pic)
-
+             wallpAdapter = new WallpAdapter(getActivity());
             recyclerView.setAdapter(wallpAdapter);
             return view;
         }
@@ -102,21 +102,19 @@ public class DiscoverFragment extends Fragment implements AsyncResponse {
 
     }
 
-    public void requestDataRefresh(){
 
-        final WallpService wallpService = new WallpService(networkUtilities, getActivity(), this,1);
-        wallpService.loadWallp();
 
-    }
     public void loadNextDataFromApi(int offset) {
         // Send an API request to retrieve appropriate paginated data
         //  --> Send the request including an offset value (i.e `page`) as a query parameter.
         //  --> Deserialize and construct new model objects from the API response
         //  --> Append the new data objects to the existing set of items inside the array of items
         //  --> Notify the adapter of the new items made with `notifyItemRangeInserted()`
-
-        final WallpService wallpService = new WallpService(networkUtilities, getActivity(), this,offset);
+        String type="popular";
+        wallpService = new WallpService(networkUtilities, getActivity(), this,offset,type);
         wallpService.loadWallp();
     }
+
+
 
 }

@@ -1,5 +1,5 @@
 
-package com.example.android.capstone;
+package com.example.android.capstone.model;
 
 import java.util.HashMap;
 import java.util.Map;

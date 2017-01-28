@@ -1,10 +1,16 @@
-package com.example.android.capstone;
+package com.example.android.capstone.network;
 
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
+
+import com.example.android.capstone.model.Pic;
+import com.example.android.capstone.network.NetworkUtilities;
+import com.example.android.capstone.network.ApiService;
+import com.example.android.capstone.network.AsyncResponse;
+
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
@@ -26,16 +32,18 @@ public class FetchWallpTask extends AsyncTask <Void,Void,Pic> {
     public ProgressDialog progressDialog;
     private AsyncResponse output;
     private int index;
+    private String type;
 
 
 
-    public FetchWallpTask(Context context,NetworkUtilities networkUtilities,AsyncResponse output,int index){
+    public FetchWallpTask(Context context, NetworkUtilities networkUtilities, AsyncResponse output, int index, String type){
 
         this.context=context;
         this.networkUtilities=networkUtilities;
         this.progressDialog = new ProgressDialog(context);
         this.output=output;
         this.index=index;
+        this.type=type;
     }
 
 
@@ -67,8 +75,12 @@ public class FetchWallpTask extends AsyncTask <Void,Void,Pic> {
                 .build();
 
         ApiService client = retrofit.create(ApiService.class);
-
-        Call<Pic> call = client.getLatestPic(index);
+        Call<Pic> call;
+    if(type=="popular") {
+                    call = client.getLatestPic(index);
+        }
+        else
+    call=client.getCatPic(type,index);
 
         call.enqueue(new Callback<Pic>() {
             @Override

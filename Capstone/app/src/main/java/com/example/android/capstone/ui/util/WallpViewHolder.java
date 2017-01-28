@@ -1,8 +1,11 @@
-package com.example.android.capstone;
+package com.example.android.capstone.ui.util;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
+
+import com.example.android.capstone.R;
+import com.example.android.capstone.ui.util.DynamicHeightImageView;
 
 /**
  * Created by DELL on 12/13/2016.

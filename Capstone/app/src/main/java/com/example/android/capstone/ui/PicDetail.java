@@ -1,4 +1,4 @@
-package com.example.android.capstone;
+package com.example.android.capstone.ui;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -6,6 +6,8 @@ import android.support.v7.widget.Toolbar;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.android.capstone.model.Hit;
+import com.example.android.capstone.R;
 import com.squareup.picasso.Picasso;
 
 /**

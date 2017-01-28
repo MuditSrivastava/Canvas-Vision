@@ -1,5 +1,5 @@
 
-package com.example.android.capstone;
+package com.example.android.capstone.model;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -7,8 +7,7 @@ import java.util.List;
 import java.util.Map;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.os.Parcelable.Creator;
-import com.example.android.capstone.Hit;
+
 
 public class Pic implements Serializable, Parcelable
 {
@@ -26,7 +25,7 @@ public class Pic implements Serializable, Parcelable
         public Pic createFromParcel(Parcel in) {
             Pic instance = new Pic();
             instance.totalHits = ((int) in.readValue((int.class.getClassLoader())));
-            in.readList(instance.hits, (com.example.android.capstone.Hit.class.getClassLoader()));
+            in.readList(instance.hits, (com.example.android.capstone.model.Hit.class.getClassLoader()));
             instance.total = ((int) in.readValue((int.class.getClassLoader())));
             instance.additionalProperties = ((Map<String, Object> ) in.readValue((Map.class.getClassLoader())));
             return instance;

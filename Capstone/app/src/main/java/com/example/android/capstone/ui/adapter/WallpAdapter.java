@@ -1,4 +1,4 @@
-package com.example.android.capstone;
+package com.example.android.capstone.ui.adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,6 +9,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
+import com.example.android.capstone.model.Hit;
+import com.example.android.capstone.model.Pic;
+import com.example.android.capstone.ui.PicDetail;
+import com.example.android.capstone.R;
+import com.example.android.capstone.ui.util.WallpViewHolder;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -33,6 +38,7 @@ public class WallpAdapter extends RecyclerView.Adapter<WallpViewHolder> {
 
         this.context=context;
         this.hit=new ArrayList<>();
+
     }
 
     @Override
@@ -91,6 +97,8 @@ public class WallpAdapter extends RecyclerView.Adapter<WallpViewHolder> {
         // The adapter needs to know that the data has changed. If we don't call this, app will crash.
         notifyDataSetChanged();
     }
+
+
 
 
 

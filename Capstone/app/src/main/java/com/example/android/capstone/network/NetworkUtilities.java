@@ -1,4 +1,4 @@
-package com.example.android.capstone;
+package com.example.android.capstone.network;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
@@ -14,8 +14,7 @@ public class NetworkUtilities {
     public boolean isInternetConnectionPresent() {
         ConnectivityManager connectivityManager = ((ConnectivityManager) this.context.getSystemService(Context.CONNECTIVITY_SERVICE));
         NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
-        boolean isConnected = networkInfo != null && networkInfo.isConnectedOrConnecting();
-        return isConnected;
+        return (networkInfo != null && networkInfo.isConnectedOrConnecting());
     }
 
 }
