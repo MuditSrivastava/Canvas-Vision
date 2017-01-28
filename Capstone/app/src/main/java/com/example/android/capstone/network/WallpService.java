@@ -2,20 +2,10 @@ package com.example.android.capstone.network;
 
 import android.content.Context;
 
-import com.example.android.capstone.model.Pic;
-import com.example.android.capstone.network.AsyncResponse;
-import com.example.android.capstone.network.FetchWallpTask;
-import com.example.android.capstone.network.NetworkUtilities;
-
-/**
- * Created by DELL on 12/14/2016.
- */
-
 public class WallpService {
 
     private final NetworkUtilities networkUtilities;
     private Context context;
-    public static Pic picResult;
     private AsyncResponse output;
     private int index;
     private String type;
@@ -31,37 +21,23 @@ public class WallpService {
     public void loadWallp(){
         if(networkUtilities.isInternetConnectionPresent()) {
 
-
             switch (type){
-                case "latest": FetchNavTask fwt = new FetchNavTask(context, networkUtilities, output,index);
+                case "latest": FetchNavTask fwt = new FetchNavTask(context,output,index);
 //            fwt.progressDialog.show();
                     fwt.execute();break;
 
-                case "popular":  FetchWallpTask fnt = new FetchWallpTask(context, networkUtilities, output,index);
+                case "popular":  FetchWallpTask fnt = new FetchWallpTask(context, output,index);
 //            fwt.progressDialog.show();
                     fnt.execute();break;
 
-                case "editor": FetchEditTask fet = new FetchEditTask(context,networkUtilities,output,index);
+                case "editor": FetchEditTask fet = new FetchEditTask(context,output,index);
                     fet.execute();break;
 
-                default: FetchCatTask fct = new FetchCatTask(context, networkUtilities, output,index,type);
+                default: FetchCatTask fct = new FetchCatTask(context, output,index,type);
 //            fwt.progressDialog.show();
                     fct.execute();break;
 
             }
-
-
-            }
-
         }
-
-
-
-
-    public Pic getpicResult(){
-
-        return picResult;
     }
-
-
 }

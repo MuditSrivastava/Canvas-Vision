@@ -1,21 +1,10 @@
 package com.example.android.capstone.ui.adapter;
 
 import android.support.v4.app.FragmentPagerAdapter;
-
-
-
-import android.content.Context;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.Fragment;
-
 import com.example.android.capstone.ui.ExploreFragment;
 import com.example.android.capstone.ui.DiscoverFragment;
-
-
-/**
- * Created by DELL on 12/12/2016.
- */
 
 public class PagerAdapter extends FragmentPagerAdapter {
 
@@ -23,7 +12,6 @@ public class PagerAdapter extends FragmentPagerAdapter {
     private String tabTitles[] = new String[] { "Discover", "Explore" };
     public PagerAdapter(FragmentManager fm) {
         super(fm);
-
     }
 
     @Override
@@ -33,10 +21,10 @@ public class PagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-            if (position == 0)
-                return DiscoverFragment.newInstance();
-            else
-                return ExploreFragment.newInstance();
+        if (position == 0)
+            return DiscoverFragment.newInstance();
+        else
+            return ExploreFragment.newInstance();
     }
 
     @Override

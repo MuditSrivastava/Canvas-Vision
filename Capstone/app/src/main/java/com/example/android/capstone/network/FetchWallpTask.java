@@ -5,13 +5,8 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
-
 import com.example.android.capstone.MyApplication;
 import com.example.android.capstone.model.Pic;
-import com.example.android.capstone.network.NetworkUtilities;
-import com.example.android.capstone.network.ApiService;
-import com.example.android.capstone.network.AsyncResponse;
-
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
@@ -19,33 +14,21 @@ import retrofit2.Callback;
 import retrofit2.GsonConverterFactory;
 import retrofit2.Retrofit;
 
-/**
- * Created by DELL on 12/14/2016.
- */
-
 public class FetchWallpTask extends AsyncTask <Void,Void,Pic> {
 
-
-
-    private final NetworkUtilities networkUtilities;
     private Pic picResult= new Pic();
     private Context context;
     public ProgressDialog progressDialog;
     private AsyncResponse output;
     private int index;
-    private String type;
 
-
-
-    public FetchWallpTask(Context context, NetworkUtilities networkUtilities, AsyncResponse output, int index){
+    public FetchWallpTask(Context context, AsyncResponse output, int index){
 
         this.context=context;
-        this.networkUtilities=networkUtilities;
         this.progressDialog = new ProgressDialog(context);
         this.output=output;
         this.index=index;
     }
-
 
     @Override
     protected void onPreExecute() {
@@ -77,9 +60,6 @@ public class FetchWallpTask extends AsyncTask <Void,Void,Pic> {
         ApiService client = retrofit.create(ApiService.class);
         Call<Pic> call;
         call = client.getPopularPic(index);
-
-
-
         call.enqueue(new Callback<Pic>() {
             @Override
             public void onResponse(retrofit2.Response<Pic > response) {
@@ -108,15 +88,11 @@ public class FetchWallpTask extends AsyncTask <Void,Void,Pic> {
             public void onFailure(Throwable t) {
                 Toast toast = Toast.makeText(context, "Something Went Wrong!", Toast.LENGTH_SHORT);
                 toast.show();
-
             }
         });
 
         return picResult;
-
     }
-
-
 }
 
 

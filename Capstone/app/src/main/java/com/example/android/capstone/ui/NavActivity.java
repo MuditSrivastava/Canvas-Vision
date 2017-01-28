@@ -6,7 +6,6 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-
 import com.example.android.capstone.R;
 import com.example.android.capstone.model.Pic;
 import com.example.android.capstone.network.AsyncResponse;
@@ -15,15 +14,9 @@ import com.example.android.capstone.network.WallpService;
 import com.example.android.capstone.ui.adapter.WallpAdapter;
 import com.example.android.capstone.ui.util.EndlessRecyclerViewScrollListener;
 
-import static com.example.android.capstone.ui.SelectCategory.EXTRA_CAT;
-
-/**
- * Created by DELL on 1/6/2017.
- */
-
 public class NavActivity extends AppCompatActivity implements AsyncResponse {
 
-   public static final String Extra_id = "nav_id";
+    public static final String Extra_id = "nav_id";
     public WallpAdapter catAdapter;
     public RecyclerView recyclerView_cat;
     public NetworkUtilities networkUtilities;
@@ -47,17 +40,12 @@ public class NavActivity extends AppCompatActivity implements AsyncResponse {
             recyclerView_cat.setHasFixedSize(true);
             StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
             recyclerView_cat.setLayoutManager(staggeredGridLayoutManager);
-            // Retain an instance so that you can call `resetState()` for fresh searches
-
             scrollListener_cat = new EndlessRecyclerViewScrollListener(staggeredGridLayoutManager) {
                 @Override
                 public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
-                    // Triggered only when new data needs to be appended to the list
-                    // Add whatever code is needed to append new items to the bottom of the list
                     loadNextDataFromApi(page);
                 }
             };
-            // Adds the scroll listener to RecyclerView
             recyclerView_cat.addOnScrollListener(scrollListener_cat);
             catAdapter = new WallpAdapter(this);
             recyclerView_cat.setAdapter(catAdapter);
@@ -69,22 +57,19 @@ public class NavActivity extends AppCompatActivity implements AsyncResponse {
     @Override
     public void processFinish(Pic output){
 
-
         if(output.getHits()!=null)
         {
             catAdapter.setPicList(output);
         }
-
     }
     @Override
     public void onBackPressed() {
-
         super.onBackPressed();
 
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) // Press Back Icon
+        if (item.getItemId() == android.R.id.home)
         {
             finish();
         }
@@ -92,19 +77,8 @@ public class NavActivity extends AppCompatActivity implements AsyncResponse {
         return super.onOptionsItemSelected(item);
     }
 
-
     public void loadNextDataFromApi(int offset) {
-        // Send an API request to retrieve appropriate paginated data
-        //  --> Send the request including an offset value (i.e `page`) as a query parameter.
-        //  --> Deserialize and construct new model objects from the API response
-        //  --> Append the new data objects to the existing set of items inside the array of items
-        //  --> Notify the adapter of the new items made with `notifyItemRangeInserted()`
-
-
         final WallpService wallpService = new WallpService(networkUtilities, this, this,offset,type);
         wallpService.loadWallp();
     }
-
-
-
 }

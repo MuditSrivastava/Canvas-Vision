@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.Map;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.os.Parcelable.Creator;
 
 import ckm.simple.sql_provider.annotation.SimpleSQLColumn;
 import ckm.simple.sql_provider.annotation.SimpleSQLTable;
@@ -58,9 +57,6 @@ public class Hit implements Parcelable
     public final static Parcelable.Creator<Hit> CREATOR = new Creator<Hit>() {
 
 
-        @SuppressWarnings({
-            "unchecked"
-        })
         public Hit createFromParcel(Parcel in) {
             Hit instance = new Hit();
             instance.previewHeight = ((int) in.readValue((int.class.getClassLoader())));

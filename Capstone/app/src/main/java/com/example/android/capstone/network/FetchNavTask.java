@@ -5,10 +5,8 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
-
 import com.example.android.capstone.MyApplication;
 import com.example.android.capstone.model.Pic;
-
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
@@ -16,33 +14,20 @@ import retrofit2.Callback;
 import retrofit2.GsonConverterFactory;
 import retrofit2.Retrofit;
 
-/**
- * Created by DELL on 1/6/2017.
- */
-
 public class FetchNavTask extends AsyncTask<Void,Void,Pic> {
 
-
-
-    private final NetworkUtilities networkUtilities;
     private Pic picResult= new Pic();
     private Context context;
     public ProgressDialog progressDialog;
     private AsyncResponse output;
     private int index;
 
-
-
-    public FetchNavTask(Context context, NetworkUtilities networkUtilities, AsyncResponse output, int index){
-
+    public FetchNavTask(Context context,AsyncResponse output, int index){
         this.context=context;
-        this.networkUtilities=networkUtilities;
         this.progressDialog = new ProgressDialog(context);
         this.output=output;
         this.index=index;
-
     }
-
 
     @Override
     protected void onPreExecute() {
@@ -53,7 +38,6 @@ public class FetchNavTask extends AsyncTask<Void,Void,Pic> {
     protected void onPostExecute(Pic result) {
 
         progressDialog.dismiss();
-
     }
 
     @Override
@@ -74,7 +58,6 @@ public class FetchNavTask extends AsyncTask<Void,Void,Pic> {
         ApiService client = retrofit.create(ApiService.class);
         Call<Pic> call;
         call=client.getLatestPic(index);
-
         call.enqueue(new Callback<Pic>() {
             @Override
             public void onResponse(retrofit2.Response<Pic > response) {
@@ -108,10 +91,7 @@ public class FetchNavTask extends AsyncTask<Void,Void,Pic> {
         });
 
         return picResult;
-
     }
-
-
 }
 
 

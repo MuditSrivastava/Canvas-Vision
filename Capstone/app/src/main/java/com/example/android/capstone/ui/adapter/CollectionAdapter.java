@@ -8,23 +8,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
-
 import com.example.android.capstone.R;
 import com.example.android.capstone.model.Hit;
-import com.example.android.capstone.model.Pic;
 import com.example.android.capstone.ui.PicDetail;
 import com.example.android.capstone.ui.util.WallpViewHolder;
 import com.squareup.picasso.Picasso;
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-
-import static android.icu.lang.UCharacter.GraphemeClusterBreak.L;
-
-/**
- * Created by DELL on 1/11/2017.
- */
 
 public class CollectionAdapter extends RecyclerView.Adapter<WallpViewHolder> {
 
@@ -43,8 +34,6 @@ public class CollectionAdapter extends RecyclerView.Adapter<WallpViewHolder> {
     @Override
     public WallpViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        // View layoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.wallp_item, null);
-
         View itemView = LayoutInflater.from(context).inflate(R.layout.wallp_item, null);
         final WallpViewHolder rcv=new WallpViewHolder(itemView);
         itemView.setOnClickListener(new View.OnClickListener() {
@@ -57,8 +46,6 @@ public class CollectionAdapter extends RecyclerView.Adapter<WallpViewHolder> {
                 context.startActivity(intent);
             }
         });
-
-
 
         return rcv;
     }
@@ -73,12 +60,8 @@ public class CollectionAdapter extends RecyclerView.Adapter<WallpViewHolder> {
         float ratio =  height/width ;
         rlp.height = (int) (rlp.width * ratio);
         holder.discWallp.setLayoutParams(rlp);
-
         holder.discWallp.setRatio(ratio);
-
         File file = new File(Environment.getExternalStoragePublicDirectory("/Canvas Vision"), photo.getId()+".jpg");
-
-
         Picasso.with(context)
                 .load(file)
                 .placeholder(R.drawable.plh)
@@ -93,10 +76,8 @@ public class CollectionAdapter extends RecyclerView.Adapter<WallpViewHolder> {
 
     public void setHitList(List<Hit> hits)
     {
-        // this.hit.clear();
         if(hits!=null)
             this.hit.addAll(hits);
-        // The adapter needs to know that the data has changed. If we don't call this, app will crash.
         notifyDataSetChanged();
     }
 

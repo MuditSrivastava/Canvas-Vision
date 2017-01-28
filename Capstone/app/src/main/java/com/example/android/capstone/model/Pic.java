@@ -19,9 +19,6 @@ public class Pic implements Serializable, Parcelable
     public final static Parcelable.Creator<Pic> CREATOR = new Creator<Pic>() {
 
 
-        @SuppressWarnings({
-            "unchecked"
-        })
         public Pic createFromParcel(Parcel in) {
             Pic instance = new Pic();
             instance.totalHits = ((int) in.readValue((int.class.getClassLoader())));

@@ -5,10 +5,8 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
-
 import com.example.android.capstone.MyApplication;
 import com.example.android.capstone.model.Pic;
-
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
@@ -16,15 +14,9 @@ import retrofit2.Callback;
 import retrofit2.GsonConverterFactory;
 import retrofit2.Retrofit;
 
-/**
- * Created by DELL on 1/7/2017.
- */
 
 public class FetchEditTask extends AsyncTask<Void,Void,Pic> {
 
-
-
-    private final NetworkUtilities networkUtilities;
     private Pic picResult= new Pic();
     private Context context;
     public ProgressDialog progressDialog;
@@ -33,16 +25,13 @@ public class FetchEditTask extends AsyncTask<Void,Void,Pic> {
 
 
 
-    public FetchEditTask(Context context, NetworkUtilities networkUtilities, AsyncResponse output, int index){
+    public FetchEditTask(Context context, AsyncResponse output, int index){
 
         this.context=context;
-        this.networkUtilities=networkUtilities;
         this.progressDialog = new ProgressDialog(context);
         this.output=output;
         this.index=index;
-
     }
-
 
     @Override
     protected void onPreExecute() {
@@ -62,9 +51,7 @@ public class FetchEditTask extends AsyncTask<Void,Void,Pic> {
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
         logging.setLevel(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
-
         httpClient.addInterceptor(logging);
-
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://pixabay.com/api/")
                 .addConverterFactory(GsonConverterFactory.create())
@@ -74,7 +61,6 @@ public class FetchEditTask extends AsyncTask<Void,Void,Pic> {
         ApiService client = retrofit.create(ApiService.class);
         Call<Pic> call;
         call=client.getEditorPic(index);
-
         call.enqueue(new Callback<Pic>() {
             @Override
             public void onResponse(retrofit2.Response<Pic > response) {
@@ -110,8 +96,6 @@ public class FetchEditTask extends AsyncTask<Void,Void,Pic> {
         return picResult;
 
     }
-
-
 }
 
 

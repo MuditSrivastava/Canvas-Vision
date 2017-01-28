@@ -5,10 +5,8 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
-
 import com.example.android.capstone.MyApplication;
 import com.example.android.capstone.model.Pic;
-
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
@@ -16,15 +14,8 @@ import retrofit2.Callback;
 import retrofit2.GsonConverterFactory;
 import retrofit2.Retrofit;
 
-/**
- * Created by DELL on 1/5/2017.
- */
-
 public class FetchCatTask extends AsyncTask<Void,Void,Pic> {
 
-
-
-    private final NetworkUtilities networkUtilities;
     private Pic picResult= new Pic();
     private Context context;
     public ProgressDialog progressDialog;
@@ -32,18 +23,14 @@ public class FetchCatTask extends AsyncTask<Void,Void,Pic> {
     private int index;
     private String type;
 
-
-
-    public FetchCatTask(Context context, NetworkUtilities networkUtilities, AsyncResponse output, int index, String type){
+    public FetchCatTask(Context context, AsyncResponse output, int index, String type){
 
         this.context=context;
-        this.networkUtilities=networkUtilities;
         this.progressDialog = new ProgressDialog(context);
         this.output=output;
         this.index=index;
         this.type=type;
     }
-
 
     @Override
     protected void onPreExecute() {
@@ -52,9 +39,7 @@ public class FetchCatTask extends AsyncTask<Void,Void,Pic> {
 
     @Override
     protected void onPostExecute(Pic result) {
-
         progressDialog.dismiss();
-
     }
 
     @Override
@@ -63,19 +48,15 @@ public class FetchCatTask extends AsyncTask<Void,Void,Pic> {
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
         logging.setLevel(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
-
         httpClient.addInterceptor(logging);
-
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://pixabay.com/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(httpClient.build())
                 .build();
-
         ApiService client = retrofit.create(ApiService.class);
         Call<Pic> call;
-            call=client.getCatPic(type,index);
-
+        call=client.getCatPic(type,index);
         call.enqueue(new Callback<Pic>() {
             @Override
             public void onResponse(retrofit2.Response<Pic > response) {
@@ -95,11 +76,9 @@ public class FetchCatTask extends AsyncTask<Void,Void,Pic> {
                 }
                 catch(Exception e) {
                     MyApplication.getInstance().trackException(e);
-
                     e.printStackTrace();
                 }
             }
-
             @Override
             public void onFailure(Throwable t) {
                 Toast toast = Toast.makeText(context, "Something Went Wrong!", Toast.LENGTH_SHORT);
@@ -111,8 +90,6 @@ public class FetchCatTask extends AsyncTask<Void,Void,Pic> {
         return picResult;
 
     }
-
-
 }
 
 

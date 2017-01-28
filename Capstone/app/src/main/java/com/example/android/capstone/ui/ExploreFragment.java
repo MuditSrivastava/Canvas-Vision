@@ -1,22 +1,18 @@
 package com.example.android.capstone.ui;
 
-import android.content.Context;
+
 import android.content.res.Configuration;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import com.example.android.capstone.MyApplication;
 import com.example.android.capstone.model.Category;
 import com.example.android.capstone.R;
 import com.example.android.capstone.ui.adapter.ExploreAdapter;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,10 +26,9 @@ public class ExploreFragment extends Fragment {
     public int column_no;
 
     public ExploreFragment() {
-        // Required empty public constructor
     }
 
-   public static ExploreFragment newInstance() {
+    public static ExploreFragment newInstance() {
         ExploreFragment fragment = new ExploreFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
@@ -43,20 +38,17 @@ public class ExploreFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
     public void onResume() {
         super.onResume();
-
         MyApplication.getInstance().trackScreenView("ExploreFragment");
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view=inflater.inflate(R.layout.fragment_explore, container, false);
         recyclerView=(RecyclerView) view.findViewById(R.id.expRecView);
         recyclerView.setHasFixedSize(true);
@@ -68,9 +60,6 @@ public class ExploreFragment extends Fragment {
         recyclerView.setAdapter(exploreAdapter);
         return view;
     }
-
-
-
 
     public void populate(){
         categoryList.add(new Category("Animals","animals"));
@@ -93,45 +82,30 @@ public class ExploreFragment extends Fragment {
         categoryList.add(new Category("Sports","sports"));
         categoryList.add(new Category("Transportation","transportation"));
         categoryList.add(new Category("Travel","travel"));
-
     }
 
     public void checkScreenSize() {
 
         int screenSize = getResources().getConfiguration().screenLayout &
                 Configuration.SCREENLAYOUT_SIZE_MASK;
-
         switch (screenSize) {
             case Configuration.SCREENLAYOUT_SIZE_XLARGE:
-
                 column_no = 4;
-                //set action
-
                 break;
             case Configuration.SCREENLAYOUT_SIZE_UNDEFINED:
                 column_no = 3;
-                //set action
                 break;
             case Configuration.SCREENLAYOUT_SIZE_LARGE:
                 column_no = 3;
-                //set action
                 break;
-
             case Configuration.SCREENLAYOUT_SIZE_NORMAL:
                 column_no = 2;
-                //set action
                 break;
             case Configuration.SCREENLAYOUT_SIZE_SMALL:
-                //set action
                 column_no = 2;
                 break;
             default:
                 column_no = 2;
-
-
         }
-
-
     }
-
 }

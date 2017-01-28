@@ -3,7 +3,6 @@ package com.example.android.capstone;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-
 import android.appwidget.AppWidgetManager;
 import android.content.Context;
 import android.content.Intent;
@@ -15,7 +14,6 @@ import android.widget.RemoteViews;
 import android.widget.RemoteViewsService;
 import com.example.android.capstone.model.CanvasDownloadTable;
 import com.example.android.capstone.model.Hit;
-
 
 public class StackWidgetService extends RemoteViewsService {
     @Override
@@ -38,16 +36,13 @@ class StackRemoteViewsFactory implements RemoteViewsService.RemoteViewsFactory {
 
     public void onCreate() {
         mWidgetItems = CanvasDownloadTable.getRows(mContext.getContentResolver().query(CanvasDownloadTable.CONTENT_URI, null, null, null, null), true);
-
         try {
             Thread.sleep(3000);
         } catch (InterruptedException e) {
             MyApplication.getInstance().trackException(e);
-
             e.printStackTrace();
         }
     }
-
     public void onDestroy() {
         mWidgetItems.clear();
     }
@@ -57,9 +52,7 @@ class StackRemoteViewsFactory implements RemoteViewsService.RemoteViewsFactory {
     }
 
     public RemoteViews getViewAt(int position) {
-
         File file = new File(Environment.getExternalStoragePublicDirectory("/Canvas Vision"), mWidgetItems.get(position).getId() + ".jpg");
-
         BitmapFactory.Options options = new BitmapFactory.Options();
         options.inPreferredConfig = Bitmap.Config.ARGB_8888;
         Bitmap bitmap = BitmapFactory.decodeFile(file.getPath(), options);
@@ -69,19 +62,15 @@ class StackRemoteViewsFactory implements RemoteViewsService.RemoteViewsFactory {
         extras.putInt(StackWidgetProvider.EXTRA_ITEM, position);
         Intent fillInIntent = new Intent();
         fillInIntent.putExtras(extras);
+        fillInIntent.putExtra(StackWidgetProvider.Extra_Hit,mWidgetItems.get(position));
         rv.setOnClickFillInIntent(R.id.widget_item, fillInIntent);
-
-
         try {
             System.out.println("Loading view " + position);
             Thread.sleep(500);
         } catch (InterruptedException e) {
             MyApplication.getInstance().trackException(e);
-
             e.printStackTrace();
         }
-
-
         return rv;
     }
 

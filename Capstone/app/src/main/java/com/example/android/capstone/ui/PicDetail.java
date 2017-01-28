@@ -1,7 +1,5 @@
 package com.example.android.capstone.ui;
 
-
-
 import android.app.DownloadManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -28,24 +26,15 @@ import com.example.android.capstone.R;
 import com.example.android.capstone.network.NetworkUtilities;
 import com.example.android.capstone.ui.adapter.TagAdapter;
 import com.squareup.picasso.Picasso;
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import jp.wasabeef.picasso.transformations.CropCircleTransformation;
 
-import static java.security.AccessController.getContext;
-
-
-/**
- * Created by DELL on 12/30/2016.
- */
-
 public class PicDetail extends AppCompatActivity {
 
     public static final String EXTRA_PIC = "picture";
     public static final String origin = "caller";
-
     private Hit hit;
     private ImageView wallp;
     private TextView tag_title;
@@ -63,8 +52,6 @@ public class PicDetail extends AppCompatActivity {
     public boolean isCallerCollection =false;
     private Menu menu;
     private File file;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,7 +73,6 @@ public class PicDetail extends AppCompatActivity {
             tags.add(f);
             first=title.indexOf(",");
             title=title.substring(++first);
-
         }
         tags.add(title);
         tag_title.setText(tags.get(0));
@@ -103,11 +89,9 @@ public class PicDetail extends AppCompatActivity {
         file = new File(Environment.getExternalStoragePublicDirectory("/Canvas Vision"), hit.getId() + ".jpg");
         if(getIntent().hasExtra(origin)){
 
-
             Picasso.with(this)
                     .load(file)
                     .placeholder(R.drawable.plh)
-                    .error(R.drawable.phe)
                     .into(wallp);
             isCallerCollection=true;
         }
@@ -132,8 +116,6 @@ public class PicDetail extends AppCompatActivity {
                         .load(hit.getUserImageURL())
                         .transform(new CropCircleTransformation())
                         .into(user_image);
-
-
             } else {
                 Picasso.with(this)
                         .load(R.drawable.memb)
@@ -146,29 +128,32 @@ public class PicDetail extends AppCompatActivity {
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
+
         if(!isCallerCollection){
             this.menu=menu;
-        getMenuInflater().inflate(R.menu.menu_details, menu);}
+            getMenuInflater().inflate(R.menu.menu_details, menu);}
+        else{
+            this.menu=menu;
+            getMenuInflater().inflate(R.menu.menu_details_collection, menu);
+        }
 
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) // Press Back Icon
+        if (item.getItemId() == android.R.id.home)
         {
             finish();
         }
 
         if (item.getItemId() == R.id.action_down) {
             if(!fileExistance()) {
-
-                    String uri=hit.getWebformatURL();
-                    uri=uri.replaceAll("_640","_960");
-                    Uri image_uri = Uri.parse(uri);
-                    DownloadData(image_uri);
-                    item.setEnabled(false);
+                String uri=hit.getWebformatURL();
+                uri=uri.replaceAll("_640","_960");
+                Uri image_uri = Uri.parse(uri);
+                DownloadData(image_uri);
+                item.setEnabled(false);
 
             }
             else{
@@ -180,10 +165,8 @@ public class PicDetail extends AppCompatActivity {
         if(item.getItemId()==R.id.action_set){
 
             if(fileExistance()) {
-
                 Uri sendUri2 = Uri.fromFile(file);
                 Log.d("URI:", sendUri2.toString());
-
                 Intent intent = new Intent(Intent.ACTION_ATTACH_DATA);
                 intent.setDataAndType(sendUri2, "image/jpg");
                 intent.putExtra("mimeType", "image/jpg");
@@ -192,10 +175,7 @@ public class PicDetail extends AppCompatActivity {
             else{
                 Toast toast = Toast.makeText(this,"Please Download First", Toast.LENGTH_LONG);
                 toast.show();
-
             }
-
-
         }
         return super.onOptionsItemSelected(item);
     }
@@ -203,25 +183,14 @@ public class PicDetail extends AppCompatActivity {
     private long DownloadData (Uri uri) {
 
         long downloadReference;
-
-        // Create request for android download manager
         DownloadManager downloadManager = (DownloadManager)getSystemService(DOWNLOAD_SERVICE);
         DownloadManager.Request request = new DownloadManager.Request(uri);
-
-        //Setting title of request
         request.setTitle(tags.get(0)+".jpg Download");
-
-        //Setting description of request
         request.setDescription("Downloading from Canvas Vision");
-
-       // request.setDestinationInExternalFilesDir(this, Environment.DIRECTORY_PICTURES,"AndroidTutorialPoint.jpg");
         request.setDestinationInExternalPublicDir("/Canvas Vision",hit.getId()+".jpg");
-
-        //Enqueue download and save into referenceId
         downloadReference = downloadManager.enqueue(request);
         getContentResolver().insert(CanvasDownloadTable.CONTENT_URI,CanvasDownloadTable.getContentValues(hit,false));
         getContentResolver().notifyChange(CanvasDownloadTable.CONTENT_URI, null);
-
 
         return downloadReference;
     }
@@ -231,23 +200,17 @@ public class PicDetail extends AppCompatActivity {
         @Override
         public void onReceive(Context context, Intent intent) {
 
-
-                Toast toast = Toast.makeText(context,tags.get(0)+".jpg Download Complete", Toast.LENGTH_SHORT);
-                toast.show();
-
-
+            Toast toast = Toast.makeText(context,tags.get(0)+".jpg Download Complete", Toast.LENGTH_SHORT);
+            toast.show();
             isDownloaded=true;
             MenuItem menuItem=menu.findItem( R.id.action_down);
             menuItem.setEnabled(true);
-
-
         }
     };
 
     @Override
     public void onDestroy() {
         // TODO Auto-generated method stub
-
         try{
             if(downloadReceiver!=null)
                 unregisterReceiver(downloadReceiver);
@@ -258,12 +221,10 @@ public class PicDetail extends AppCompatActivity {
             e.printStackTrace();
         }
         super.onDestroy();
-
     }
 
     public boolean fileExistance(){
         return file.exists();
     }
-
 
 }
