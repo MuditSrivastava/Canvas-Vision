@@ -66,7 +66,7 @@ public class WallpAdapter extends RecyclerView.Adapter<WallpViewHolder> {
     @Override
     public void onBindViewHolder(WallpViewHolder holder, int position) {
 
-        Hit photo = hit.get(position);
+        Hit photo = this.hit.get(position);
         RelativeLayout.LayoutParams rlp = (RelativeLayout.LayoutParams) holder.discWallp.getLayoutParams();
         float height =photo.getPreviewHeight();
         float width = photo.getPreviewWidth();

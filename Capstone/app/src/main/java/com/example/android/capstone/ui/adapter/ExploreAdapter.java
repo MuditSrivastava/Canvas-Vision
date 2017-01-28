@@ -46,6 +46,7 @@ public class ExploreAdapter extends RecyclerView.Adapter<ExploreViewHolder> {
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 int position = rcv.getAdapterPosition();
                 Intent intent = new Intent(context, SelectCategory.class);
                 intent.putExtra(SelectCategory.EXTRA_CAT,categoryList.get(position).getCategory_draw_id());

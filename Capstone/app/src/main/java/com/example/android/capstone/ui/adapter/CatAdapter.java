@@ -64,7 +64,7 @@ public class CatAdapter extends RecyclerView.Adapter<WallpViewHolder>  {
     @Override
     public void onBindViewHolder(WallpViewHolder holder, int position) {
 
-        Hit photo = hit.get(position);
+        Hit photo = this.hit.get(position);
         RelativeLayout.LayoutParams rlp = (RelativeLayout.LayoutParams) holder.discWallp.getLayoutParams();
         float height =photo.getPreviewHeight();
         float width = photo.getPreviewWidth();
@@ -84,12 +84,12 @@ public class CatAdapter extends RecyclerView.Adapter<WallpViewHolder>  {
     @Override
     public int getItemCount()
     {
-        return (hit == null) ? 0 : hit.size();
+        return (this.hit == null) ? 0 : this.hit.size();
     }
 
     public void setPicList(Pic picList)
     {
-        // this.hit.clear();
+      //    this.hit.clear();
         if(picList.getHits()!=null)
             this.hit.addAll(picList.getHits());
         // The adapter needs to know that the data has changed. If we don't call this, app will crash.

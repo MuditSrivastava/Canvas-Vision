@@ -30,12 +30,20 @@ public class WallpService {
 
     public void loadWallp(){
         if(networkUtilities.isInternetConnectionPresent()) {
+            if(type=="popular"){
             FetchWallpTask fwt = new FetchWallpTask(context, networkUtilities, output,index,type);
 //            fwt.progressDialog.show();
-            fwt.execute();
+            fwt.execute();}
+            else{
+
+                FetchCatTask fct = new FetchCatTask(context, networkUtilities, output,index,type);
+//            fwt.progressDialog.show();
+                fct.execute();}
+            }
+
         }
 
-    }
+
 
     public Pic getpicResult(){
 

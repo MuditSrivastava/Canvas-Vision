@@ -7,9 +7,6 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.example.android.capstone.model.Pic;
-import com.example.android.capstone.network.NetworkUtilities;
-import com.example.android.capstone.network.ApiService;
-import com.example.android.capstone.network.AsyncResponse;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -19,10 +16,10 @@ import retrofit2.GsonConverterFactory;
 import retrofit2.Retrofit;
 
 /**
- * Created by DELL on 12/14/2016.
+ * Created by DELL on 1/5/2017.
  */
 
-public class FetchWallpTask extends AsyncTask <Void,Void,Pic> {
+public class FetchCatTask extends AsyncTask<Void,Void,Pic> {
 
 
 
@@ -36,7 +33,7 @@ public class FetchWallpTask extends AsyncTask <Void,Void,Pic> {
 
 
 
-    public FetchWallpTask(Context context, NetworkUtilities networkUtilities, AsyncResponse output, int index, String type){
+    public FetchCatTask(Context context, NetworkUtilities networkUtilities, AsyncResponse output, int index, String type){
 
         this.context=context;
         this.networkUtilities=networkUtilities;
@@ -76,9 +73,7 @@ public class FetchWallpTask extends AsyncTask <Void,Void,Pic> {
 
         ApiService client = retrofit.create(ApiService.class);
         Call<Pic> call;
-        call = client.getLatestPic(index);
-
-
+            call=client.getCatPic(type,index);
 
         call.enqueue(new Callback<Pic>() {
             @Override

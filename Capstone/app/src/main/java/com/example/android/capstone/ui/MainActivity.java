@@ -1,5 +1,6 @@
 package com.example.android.capstone.ui;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -11,6 +12,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
+
 import com.example.android.capstone.ui.adapter.PagerAdapter;
 import com.example.android.capstone.ui.DiscoverFragment;
 import com.example.android.capstone.R;
@@ -25,6 +28,9 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        TextView myTitle = (TextView) toolbar.getChildAt(0);
+        Typeface tf = Typeface.createFromAsset(getAssets(),"fonts/Satisfy-Regular.ttf");
+        myTitle.setTypeface(tf,Typeface.BOLD);
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
