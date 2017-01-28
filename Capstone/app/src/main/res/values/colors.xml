@@ -3,4 +3,9 @@
     <color name="colorPrimary">#000</color>
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#DAA520</color>
+    <color name="colorDetailPrimary">#FFF</color>
+    <color name="colorDetailPrimaryDark">#f1f2f4</color>
+    <color name="colorDetailAccent">#DAA520</color>
+    <color name="up_button">#d8625e5e</color>
+
 </resources>

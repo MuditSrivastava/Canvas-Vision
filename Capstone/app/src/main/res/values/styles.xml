@@ -13,8 +13,20 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="AppDetailTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/colorDetailPrimary</item>
+        <item name="colorPrimaryDark">@color/colorDetailPrimaryDark</item>
+        <item name="colorAccent">@color/colorDetailAccent</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="ToolbarColoredBackArrow" parent="AppDetailTheme">
+        <item name="android:textColorSecondary">@color/up_button</item>
+    </style>
 
 </resources>

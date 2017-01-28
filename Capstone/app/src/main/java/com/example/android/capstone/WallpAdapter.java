@@ -1,11 +1,13 @@
 package com.example.android.capstone;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Movie;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 
 import com.squareup.picasso.Picasso;
 
@@ -13,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static android.media.CamcorderProfile.get;
+import static com.example.android.capstone.R.id.imageView;
 
 
 /**
@@ -35,8 +38,22 @@ public class WallpAdapter extends RecyclerView.Adapter<WallpViewHolder> {
     @Override
     public WallpViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View layoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.wallp_item, null);
-        WallpViewHolder rcv = new WallpViewHolder(layoutView);
+       // View layoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.wallp_item, null);
+
+        View itemView = LayoutInflater.from(context).inflate(R.layout.wallp_item, null);
+        final WallpViewHolder rcv=new WallpViewHolder(itemView);
+        itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int position = rcv.getAdapterPosition();
+                Intent intent = new Intent(context, PicDetail.class);
+                intent.putExtra(PicDetail.EXTRA_PIC, hit.get(position));
+                context.startActivity(intent);
+            }
+        });
+
+
+
         return rcv;
     }
 
@@ -44,6 +61,14 @@ public class WallpAdapter extends RecyclerView.Adapter<WallpViewHolder> {
     public void onBindViewHolder(WallpViewHolder holder, int position) {
 
         Hit photo = hit.get(position);
+        RelativeLayout.LayoutParams rlp = (RelativeLayout.LayoutParams) holder.discWallp.getLayoutParams();
+        float height =photo.getPreviewHeight();
+        float width = photo.getPreviewWidth();
+        float ratio =  height/width ;
+        rlp.height = (int) (rlp.width * ratio);
+        holder.discWallp.setLayoutParams(rlp);
+
+        holder.discWallp.setRatio(ratio);
 
         Picasso.with(context)
                 .load(photo.getWebformatURL())

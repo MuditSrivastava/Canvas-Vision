@@ -10,11 +10,11 @@ import android.widget.ImageView;
 
 public class WallpViewHolder extends RecyclerView.ViewHolder {
 
-    public ImageView discWallp;
+    public DynamicHeightImageView discWallp;
 
     public WallpViewHolder(View itemView){
 
         super(itemView);
-        discWallp =(ImageView)itemView.findViewById(R.id.wallpView);
+        discWallp =(DynamicHeightImageView)itemView.findViewById(R.id.wallpView);
     }
 }

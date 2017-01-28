@@ -77,13 +77,13 @@ public class DiscoverFragment extends Fragment implements AsyncResponse {
             };
             // Adds the scroll listener to RecyclerView
             recyclerView.addOnScrollListener(scrollListener);
-            for(int i=0;i<30;i++) {
+       /*     for(int i=0;i<30;i++) {
                 hit.add(new Hit());
             }
-            pic= new Pic();
+            pic= new Pic();*/
             wallpAdapter = new WallpAdapter(getActivity());
-            pic.setHits(hit);
-           // wallpAdapter.setPicList(pic);
+            //pic.setHits(hit);
+           // wallpAdapter.setPicList(pic)
 
             recyclerView.setAdapter(wallpAdapter);
             return view;

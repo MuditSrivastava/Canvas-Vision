@@ -1,14 +1,13 @@
 
 package com.example.android.capstone;
 
-import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 
-public class Hit implements Serializable, Parcelable
+public class Hit implements  Parcelable
 {
 
     private int previewHeight;
