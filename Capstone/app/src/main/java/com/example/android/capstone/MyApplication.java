@@ -1,11 +1,12 @@
 package com.example.android.capstone;
 
 import android.app.Application;
-
+import com.example.android.capstone.analytics.AnalyticsTrackers;
 import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.StandardExceptionParser;
 import com.google.android.gms.analytics.Tracker;
+
 
 public class MyApplication extends Application {
     public static final String TAG = MyApplication.class

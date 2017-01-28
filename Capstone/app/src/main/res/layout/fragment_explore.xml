@@ -9,5 +9,5 @@
         android:id="@+id/expRecView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" /> <!-- check this -->
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 </RelativeLayout>

@@ -1,6 +1,8 @@
-package  com.example.android.capstone;
+package  com.example.android.capstone.ui.widget;
 
 import android.appwidget.AppWidgetProvider;
+
+import com.example.android.capstone.R;
 import com.example.android.capstone.model.CanvasDownloadTable;
 import com.example.android.capstone.model.Hit;
 import com.example.android.capstone.ui.PicDetail;

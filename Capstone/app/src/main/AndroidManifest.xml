@@ -50,7 +50,7 @@
             android:name=".PicProvider"
             android:authorities="com.example.android.capstone" />
 
-        <receiver android:name="StackWidgetProvider">
+        <receiver android:name=".ui.widget.StackWidgetProvider">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
@@ -58,7 +58,7 @@
                 android:resource="@xml/stackwidgetinfo" />
         </receiver>
 
-        <service android:name="StackWidgetService"
+        <service android:name=".ui.widget.StackWidgetService"
             android:permission="android.permission.BIND_REMOTEVIEWS"
             android:exported="false" />
         <!--Include the AdActivity configChanges and theme. -->

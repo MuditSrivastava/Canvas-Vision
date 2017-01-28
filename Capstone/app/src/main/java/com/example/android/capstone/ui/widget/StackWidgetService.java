@@ -1,4 +1,4 @@
-package com.example.android.capstone;
+package  com.example.android.capstone.ui.widget;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -13,6 +13,9 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.widget.RemoteViews;
 import android.widget.RemoteViewsService;
+
+import com.example.android.capstone.MyApplication;
+import com.example.android.capstone.R;
 import com.example.android.capstone.model.CanvasDownloadTable;
 import com.example.android.capstone.model.Hit;
 
