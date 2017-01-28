@@ -82,7 +82,6 @@ public class CollectionAdapter extends RecyclerView.Adapter<WallpViewHolder> {
         Picasso.with(context)
                 .load(file)
                 .placeholder(R.drawable.plh)
-                .error(R.drawable.phe)
                 .into(holder.discWallp);
     }
 

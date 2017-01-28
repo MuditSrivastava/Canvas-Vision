@@ -34,6 +34,7 @@ import java.util.ArrayList;
 import java.util.List;
 import jp.wasabeef.picasso.transformations.CropCircleTransformation;
 
+import static java.security.AccessController.getContext;
 
 
 /**
@@ -218,6 +219,9 @@ public class PicDetail extends AppCompatActivity {
 
         //Enqueue download and save into referenceId
         downloadReference = downloadManager.enqueue(request);
+        getContentResolver().insert(CanvasDownloadTable.CONTENT_URI,CanvasDownloadTable.getContentValues(hit,false));
+        getContentResolver().notifyChange(CanvasDownloadTable.CONTENT_URI, null);
+
 
         return downloadReference;
     }
@@ -231,7 +235,7 @@ public class PicDetail extends AppCompatActivity {
                 Toast toast = Toast.makeText(context,tags.get(0)+".jpg Download Complete", Toast.LENGTH_SHORT);
                 toast.show();
 
-            getContentResolver().insert(CanvasDownloadTable.CONTENT_URI,CanvasDownloadTable.getContentValues(hit,false));
+
             isDownloaded=true;
             MenuItem menuItem=menu.findItem( R.id.action_down);
             menuItem.setEnabled(true);
