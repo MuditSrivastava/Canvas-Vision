@@ -76,7 +76,7 @@ public class WallpAdapter extends RecyclerView.Adapter<WallpViewHolder> {
         holder.discWallp.setRatio(ratio);
 
         Picasso.with(context)
-                .load(photo.getPreviewURL())
+                .load(photo.getWebformatURL())
                 .placeholder(R.drawable.plh)
                 .error(R.drawable.phe)
                 .into(holder.discWallp);

@@ -1,6 +1,7 @@
 package com.example.android.capstone.ui;
 
 import android.content.Context;
+import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -25,6 +26,8 @@ public class ExploreFragment extends Fragment {
     private GridLayoutManager gridLayoutManager;
     public List<Category> categoryList= new ArrayList<>();
     public ExploreAdapter exploreAdapter;
+    public int column_no;
+
     public ExploreFragment() {
         // Required empty public constructor
     }
@@ -50,7 +53,8 @@ public class ExploreFragment extends Fragment {
         View view=inflater.inflate(R.layout.fragment_explore, container, false);
         recyclerView=(RecyclerView) view.findViewById(R.id.expRecView);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+        checkScreenSize();
+        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), column_no));
         exploreAdapter= new ExploreAdapter(getActivity());
         populate();
         exploreAdapter.setCategoryList(categoryList);
@@ -82,6 +86,44 @@ public class ExploreFragment extends Fragment {
         categoryList.add(new Category("Sports","sports"));
         categoryList.add(new Category("Transportation","transportation"));
         categoryList.add(new Category("Travel","travel"));
+
+    }
+
+    public void checkScreenSize() {
+
+        int screenSize = getResources().getConfiguration().screenLayout &
+                Configuration.SCREENLAYOUT_SIZE_MASK;
+
+        switch (screenSize) {
+            case Configuration.SCREENLAYOUT_SIZE_XLARGE:
+
+                column_no = 4;
+                //set action
+
+                break;
+            case Configuration.SCREENLAYOUT_SIZE_UNDEFINED:
+                column_no = 3;
+                //set action
+                break;
+            case Configuration.SCREENLAYOUT_SIZE_LARGE:
+                column_no = 3;
+                //set action
+                break;
+
+            case Configuration.SCREENLAYOUT_SIZE_NORMAL:
+                column_no = 2;
+                //set action
+                break;
+            case Configuration.SCREENLAYOUT_SIZE_SMALL:
+                //set action
+                column_no = 2;
+                break;
+            default:
+                column_no = 2;
+
+
+        }
+
 
     }
 

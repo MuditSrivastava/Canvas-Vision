@@ -1,5 +1,6 @@
 package com.example.android.capstone.ui;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -34,6 +35,7 @@ public class DiscoverFragment extends Fragment implements AsyncResponse {
     public NetworkUtilities networkUtilities;
     public EndlessRecyclerViewScrollListener scrollListener;
     WallpService wallpService;
+    public int column_no;
 
 
     public DiscoverFragment() {
@@ -68,7 +70,8 @@ public class DiscoverFragment extends Fragment implements AsyncResponse {
             View view = inflater.inflate(R.layout.fragment_discover, container, false);
             recyclerView=(RecyclerView) view.findViewById(R.id.discRecView);
             recyclerView.setHasFixedSize(true);
-          StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL);
+            checkScreenSize();
+          StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(column_no,StaggeredGridLayoutManager.VERTICAL);
             recyclerView.setLayoutManager(staggeredGridLayoutManager);
 
             // Retain an instance so that you can call `resetState()` for fresh searches
@@ -113,7 +116,41 @@ public class DiscoverFragment extends Fragment implements AsyncResponse {
         wallpService = new WallpService(networkUtilities, getActivity(), this,offset,type);
         wallpService.loadWallp();
     }
+    public void checkScreenSize() {
+
+        int screenSize = getResources().getConfiguration().screenLayout &
+                Configuration.SCREENLAYOUT_SIZE_MASK;
+
+        switch (screenSize) {
+            case Configuration.SCREENLAYOUT_SIZE_XLARGE:
+
+                column_no = 4;
+                //set action
+
+                break;
+            case Configuration.SCREENLAYOUT_SIZE_UNDEFINED:
+                column_no = 3;
+                //set action
+                break;
+            case Configuration.SCREENLAYOUT_SIZE_LARGE:
+                column_no = 3;
+                //set action
+                break;
+
+            case Configuration.SCREENLAYOUT_SIZE_NORMAL:
+                column_no = 2;
+                //set action
+                break;
+            case Configuration.SCREENLAYOUT_SIZE_SMALL:
+                //set action
+                column_no = 2;
+                break;
+            default:
+                column_no = 2;
 
 
+        }
 
+
+    }
 }

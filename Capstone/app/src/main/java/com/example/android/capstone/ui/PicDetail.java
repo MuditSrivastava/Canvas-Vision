@@ -62,6 +62,7 @@ public class PicDetail extends AppCompatActivity {
     private File file;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -160,7 +161,9 @@ public class PicDetail extends AppCompatActivity {
         if (item.getItemId() == R.id.action_down) {
             if(!fileExistance()) {
 
-                    Uri image_uri = Uri.parse(hit.getWebformatURL());
+                    String uri=hit.getWebformatURL();
+                    uri=uri.replaceAll("_640","_960");
+                    Uri image_uri = Uri.parse(uri);
                     DownloadData(image_uri);
                     item.setEnabled(false);
 

@@ -5,6 +5,10 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="app_detail_name"> </string>
     <string name="action_settings">Settings</string>
+    <string name="appwidget_text">Canvas Vision</string>
+    <string name="add_widget">Add widget</string>
+    <!-- AdMob ad unit IDs -->
+    <string name="banner_home_footer">ca-app-pub-1060534192860592/4572822869</string>
 
 
 </resources>

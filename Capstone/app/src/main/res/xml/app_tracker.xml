@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--  The property id associated with this analytics tracker -->
+    <string name="ga_trackingId">UA-90424631-1</string>
+
+</resources>
