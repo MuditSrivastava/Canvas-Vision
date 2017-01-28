@@ -33,11 +33,11 @@ public class WallpService {
 
 
             switch (type){
-                case "latest": FetchWallpTask fwt = new FetchWallpTask(context, networkUtilities, output,index);
+                case "latest": FetchNavTask fwt = new FetchNavTask(context, networkUtilities, output,index);
 //            fwt.progressDialog.show();
                     fwt.execute();break;
 
-                case "popular":  FetchNavTask fnt = new FetchNavTask(context, networkUtilities, output,index);
+                case "popular":  FetchWallpTask fnt = new FetchWallpTask(context, networkUtilities, output,index);
 //            fwt.progressDialog.show();
                     fnt.execute();break;
 

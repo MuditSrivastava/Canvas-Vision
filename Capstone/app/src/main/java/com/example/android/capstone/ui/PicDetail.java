@@ -20,6 +20,8 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.android.capstone.MyApplication;
 import com.example.android.capstone.model.CanvasDownloadTable;
 import com.example.android.capstone.model.Hit;
 import com.example.android.capstone.R;
@@ -247,7 +249,9 @@ public class PicDetail extends AppCompatActivity {
                 unregisterReceiver(downloadReceiver);
         }catch(Exception e)
         {
-        e.printStackTrace();
+            MyApplication.getInstance().trackException(e);
+
+            e.printStackTrace();
         }
         super.onDestroy();
 

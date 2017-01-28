@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.android.capstone.MyApplication;
 import com.example.android.capstone.model.Category;
 import com.example.android.capstone.R;
 import com.example.android.capstone.ui.adapter.ExploreAdapter;
@@ -43,7 +44,13 @@ public class ExploreFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+    }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        MyApplication.getInstance().trackScreenView("ExploreFragment");
     }
 
     @Override

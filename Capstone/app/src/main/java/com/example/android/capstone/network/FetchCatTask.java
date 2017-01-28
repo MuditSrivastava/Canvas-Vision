@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.android.capstone.MyApplication;
 import com.example.android.capstone.model.Pic;
 
 import okhttp3.OkHttpClient;
@@ -93,6 +94,7 @@ public class FetchCatTask extends AsyncTask<Void,Void,Pic> {
                     }
                 }
                 catch(Exception e) {
+                    MyApplication.getInstance().trackException(e);
 
                     e.printStackTrace();
                 }

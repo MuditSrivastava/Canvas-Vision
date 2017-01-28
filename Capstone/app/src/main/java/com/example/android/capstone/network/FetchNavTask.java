@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.android.capstone.MyApplication;
 import com.example.android.capstone.model.Pic;
 
 import okhttp3.OkHttpClient;
@@ -72,7 +73,7 @@ public class FetchNavTask extends AsyncTask<Void,Void,Pic> {
 
         ApiService client = retrofit.create(ApiService.class);
         Call<Pic> call;
-        call=client.getPopularPic(index);
+        call=client.getLatestPic(index);
 
         call.enqueue(new Callback<Pic>() {
             @Override
@@ -92,6 +93,7 @@ public class FetchNavTask extends AsyncTask<Void,Void,Pic> {
                     }
                 }
                 catch(Exception e) {
+                    MyApplication.getInstance().trackException(e);
 
                     e.printStackTrace();
                 }

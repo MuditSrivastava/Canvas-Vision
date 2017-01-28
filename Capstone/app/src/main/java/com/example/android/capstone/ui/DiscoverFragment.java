@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
+import com.example.android.capstone.MyApplication;
 import com.example.android.capstone.ui.util.EndlessRecyclerViewScrollListener;
 import com.example.android.capstone.model.Hit;
 import com.example.android.capstone.model.Pic;
@@ -56,6 +57,13 @@ public class DiscoverFragment extends Fragment implements AsyncResponse {
         networkUtilities = new NetworkUtilities(getActivity());
 
         loadNextDataFromApi(1);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        MyApplication.getInstance().trackScreenView("DiscoverFragment");
     }
 
     @Override
@@ -112,7 +120,7 @@ public class DiscoverFragment extends Fragment implements AsyncResponse {
         //  --> Deserialize and construct new model objects from the API response
         //  --> Append the new data objects to the existing set of items inside the array of items
         //  --> Notify the adapter of the new items made with `notifyItemRangeInserted()`
-        String type="latest";
+        String type="popular";
         wallpService = new WallpService(networkUtilities, getActivity(), this,offset,type);
         wallpService.loadWallp();
     }
@@ -150,6 +158,8 @@ public class DiscoverFragment extends Fragment implements AsyncResponse {
 
 
         }
+
+
 
 
     }

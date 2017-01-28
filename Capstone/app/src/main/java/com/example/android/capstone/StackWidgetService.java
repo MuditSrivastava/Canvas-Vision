@@ -71,6 +71,8 @@ class StackRemoteViewsFactory implements RemoteViewsService.RemoteViewsFactory {
         try {
             Thread.sleep(3000);
         } catch (InterruptedException e) {
+            MyApplication.getInstance().trackException(e);
+
             e.printStackTrace();
         }
     }
@@ -114,6 +116,8 @@ class StackRemoteViewsFactory implements RemoteViewsService.RemoteViewsFactory {
             System.out.println("Loading view " + position);
             Thread.sleep(500);
         } catch (InterruptedException e) {
+            MyApplication.getInstance().trackException(e);
+
             e.printStackTrace();
         }
 

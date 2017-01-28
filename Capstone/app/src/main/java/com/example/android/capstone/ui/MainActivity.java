@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_camera) {
             Intent intent = new Intent(this, NavActivity.class);
-            intent.putExtra(NavActivity.Extra_id, "popular");
+            intent.putExtra(NavActivity.Extra_id, "latest");
             this.startActivity(intent);
 
         } else if (id == R.id.nav_gallery) {

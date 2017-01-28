@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.android.capstone.MyApplication;
 import com.example.android.capstone.model.Pic;
 import com.example.android.capstone.network.NetworkUtilities;
 import com.example.android.capstone.network.ApiService;
@@ -75,7 +76,7 @@ public class FetchWallpTask extends AsyncTask <Void,Void,Pic> {
 
         ApiService client = retrofit.create(ApiService.class);
         Call<Pic> call;
-        call = client.getLatestPic(index);
+        call = client.getPopularPic(index);
 
 
 
@@ -97,6 +98,7 @@ public class FetchWallpTask extends AsyncTask <Void,Void,Pic> {
                     }
                 }
                 catch(Exception e) {
+                    MyApplication.getInstance().trackException(e);
 
                     e.printStackTrace();
                 }
