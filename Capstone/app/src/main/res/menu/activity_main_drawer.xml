@@ -12,7 +12,7 @@
             android:title="Editor's Choice" />
         <item
             android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_menu_collect"
             android:title="My Collection" />
 
     </group>
@@ -21,7 +21,7 @@
         <menu>
             <item
                 android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
+                android:icon="@drawable/ic_menu_info"
                 android:title="About Us" />
             <item
                 android:id="@+id/nav_send"
