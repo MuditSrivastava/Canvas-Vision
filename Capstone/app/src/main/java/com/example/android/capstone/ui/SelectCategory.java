@@ -1,5 +1,6 @@
 package com.example.android.capstone.ui;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
@@ -22,6 +23,7 @@ public class SelectCategory extends AppCompatActivity implements AsyncResponse {
     public NetworkUtilities networkUtilities;
     private EndlessRecyclerViewScrollListener scrollListener_cat;
     private String type;
+    public int column_no;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -38,7 +40,8 @@ public class SelectCategory extends AppCompatActivity implements AsyncResponse {
             loadNextDataFromApi(1);
             recyclerView_cat = (RecyclerView) findViewById(R.id.SelCatRecView);
             recyclerView_cat.setHasFixedSize(true);
-            StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+            checkScreenSize();
+            StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(column_no, StaggeredGridLayoutManager.VERTICAL);
             recyclerView_cat.setLayoutManager(staggeredGridLayoutManager);
             scrollListener_cat = new EndlessRecyclerViewScrollListener(staggeredGridLayoutManager) {
                 @Override
@@ -82,6 +85,32 @@ public class SelectCategory extends AppCompatActivity implements AsyncResponse {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+    public void checkScreenSize() {
+
+        int screenSize = getResources().getConfiguration().screenLayout &
+                Configuration.SCREENLAYOUT_SIZE_MASK;
+
+        switch (screenSize) {
+            case Configuration.SCREENLAYOUT_SIZE_XLARGE:
+
+                column_no = 4;
+                break;
+            case Configuration.SCREENLAYOUT_SIZE_UNDEFINED:
+                column_no = 3;
+                break;
+            case Configuration.SCREENLAYOUT_SIZE_LARGE:
+                column_no = 3;
+                break;
+            case Configuration.SCREENLAYOUT_SIZE_NORMAL:
+                column_no = 2;
+                break;
+            case Configuration.SCREENLAYOUT_SIZE_SMALL:
+                column_no = 2;
+                break;
+            default:
+                column_no = 2;
+        }
     }
 }
 

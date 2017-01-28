@@ -1,6 +1,5 @@
 package com.example.android.capstone.network;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
@@ -18,7 +17,6 @@ public class FetchCatTask extends AsyncTask<Void,Void,Pic> {
 
     private Pic picResult= new Pic();
     private Context context;
-    public ProgressDialog progressDialog;
     private AsyncResponse output;
     private int index;
     private String type;
@@ -26,20 +24,9 @@ public class FetchCatTask extends AsyncTask<Void,Void,Pic> {
     public FetchCatTask(Context context, AsyncResponse output, int index, String type){
 
         this.context=context;
-        this.progressDialog = new ProgressDialog(context);
         this.output=output;
         this.index=index;
         this.type=type;
-    }
-
-    @Override
-    protected void onPreExecute() {
-        progressDialog.setMessage("Just a sec ...");
-    }
-
-    @Override
-    protected void onPostExecute(Pic result) {
-        progressDialog.dismiss();
     }
 
     @Override

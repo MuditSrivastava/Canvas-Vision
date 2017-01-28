@@ -30,8 +30,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
-                    android:layout_marginLeft="12dp"
-                    android:layout_marginRight="12dp"
+                    android:layout_marginLeft="@dimen/margin2"
+                    android:layout_marginRight="@dimen/margin2"
                     android:id="@+id/toolbar_title" />
             </android.support.v7.widget.Toolbar>
         </android.support.design.widget.AppBarLayout>
@@ -51,29 +51,30 @@
                     android:id="@+id/wallpaper_detail"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="6dp"
+                    android:layout_marginTop="@dimen/margin"
+                    android:contentDescription="@string/detail_image"
                     android:adjustViewBounds="true" />
                 <android.support.v7.widget.CardView
                     android:id="@+id/reviewCardView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:foreground="?android:attr/selectableItemBackground"
-                    app:cardElevation="4dp"
+                    app:cardElevation="@dimen/card_elevation_small"
                     app:cardUseCompatPadding="true">
                     <android.support.v7.widget.RecyclerView
                         android:id="@+id/tagsRv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:scrollbars="horizontal"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginRight="8dp"/>
+                        android:layout_marginTop="@dimen/margin3"
+                        android:layout_marginLeft="@dimen/margin1"
+                        android:layout_marginRight="@dimen/margin1"/>
                 </android.support.v7.widget.CardView>
                 <android.support.v7.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:foreground="?android:attr/selectableItemBackground"
-                    app:cardElevation="4dp"
+                    app:cardElevation="@dimen/card_elevation_small"
                     app:cardUseCompatPadding="true">
 
                     <LinearLayout
@@ -82,36 +83,39 @@
                         android:orientation="horizontal">
                         <ImageView
                             android:id="@+id/user_image"
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:layout_marginTop="16dp"
-                            android:layout_marginBottom="12dp"
-                            android:layout_marginLeft="16dp"
+                            android:layout_width="@dimen/user_size"
+                            android:layout_height="@dimen/user_size"
+                            android:layout_marginTop="@dimen/margin3"
+                            android:layout_marginBottom="@dimen/margin2"
+                            android:layout_marginLeft="@dimen/margin3"
+                            android:layout_marginRight="@dimen/margin3"
+                            android:contentDescription="@string/user_name"
                             android:adjustViewBounds="true" />
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="By:"
+                            android:text="@string/by"
                             android:layout_gravity="center"
-                            android:layout_marginTop="6dp"
-                            android:layout_marginLeft="20dp"
-                            android:padding="4dp"
-                            android:textSize="20sp" />
+                            android:layout_marginTop="@dimen/margin"
+                            android:layout_marginLeft="@dimen/margin4"
+                            android:layout_marginRight="@dimen/margin4"
+                            android:padding="@dimen/text_padding2"
+                            android:textSize="@dimen/text_size2" />
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:id="@+id/user_name"
-                            android:layout_marginTop="6dp"
+                            android:layout_marginTop="@dimen/margin"
                             android:layout_gravity="center"
-                            android:padding="4dp"
-                            android:textSize="20sp" />
+                            android:padding="@dimen/text_padding2"
+                            android:textSize="@dimen/text_size2" />
                     </LinearLayout>
                 </android.support.v7.widget.CardView>
                 <android.support.v7.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:foreground="?android:attr/selectableItemBackground"
-                    app:cardElevation="4dp"
+                    app:cardElevation="@dimen/card_elevation_small"
                     app:cardUseCompatPadding="true">
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -124,21 +128,23 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Downloads:"
-                                android:layout_marginTop="6dp"
-                                android:layout_marginBottom="6dp"
-                                android:layout_marginLeft="12dp"
-                                android:padding="4dp"
-                                android:textSize="15sp" />
+                                android:text="@string/downloads"
+                                android:layout_marginTop="@dimen/margin"
+                                android:layout_marginBottom="@dimen/margin"
+                                android:layout_marginLeft="@dimen/margin2"
+                                android:layout_marginRight="@dimen/margin2"
+                                android:padding="@dimen/text_padding2"
+                                android:textSize="@dimen/text_size0" />
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:id="@+id/down"
-                                android:layout_marginTop="6dp"
-                                android:layout_marginBottom="6dp"
-                                android:layout_marginLeft="4dp"
-                                android:padding="4dp"
-                                android:textSize="15sp" />
+                                android:layout_marginTop="@dimen/margin"
+                                android:layout_marginBottom="@dimen/margin"
+                                android:layout_marginLeft="@dimen/margin0"
+                                android:layout_marginRight="@dimen/margin0"
+                                android:padding="@dimen/text_padding2"
+                                android:textSize="@dimen/text_size0" />
                         </LinearLayout>
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -147,21 +153,23 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Favourites:"
-                                android:layout_marginTop="6dp"
-                                android:layout_marginBottom="6dp"
-                                android:layout_marginLeft="12dp"
-                                android:padding="4dp"
-                                android:textSize="15sp" />
+                                android:text="@string/favourite"
+                                android:layout_marginTop="@dimen/margin"
+                                android:layout_marginBottom="@dimen/margin"
+                                android:layout_marginLeft="@dimen/margin2"
+                                android:layout_marginRight="@dimen/margin2"
+                                android:padding="@dimen/text_padding2"
+                                android:textSize="@dimen/text_size0" />
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:id="@+id/fav"
-                                android:layout_marginTop="6dp"
-                                android:layout_marginBottom="6dp"
-                                android:layout_marginLeft="4dp"
-                                android:padding="4dp"
-                                android:textSize="15sp" />
+                                android:layout_marginTop="@dimen/margin"
+                                android:layout_marginBottom="@dimen/margin"
+                                android:layout_marginLeft="@dimen/margin0"
+                                android:layout_marginRight="@dimen/margin0"
+                                android:padding="@dimen/text_padding2"
+                                android:textSize="@dimen/text_size0" />
                         </LinearLayout>
                     </LinearLayout>
                 </android.support.v7.widget.CardView>

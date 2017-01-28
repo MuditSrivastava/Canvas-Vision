@@ -15,8 +15,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:textColor="#ffffff"
+        android:textColor="@color/colorDetailPrimary"
         android:textStyle="bold"
         android:text="@string/app_name"
-        android:textSize="20sp" />
+        android:textSize="@dimen/text_size2" />
 </FrameLayout>

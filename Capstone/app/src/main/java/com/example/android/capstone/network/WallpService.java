@@ -23,18 +23,15 @@ public class WallpService {
 
             switch (type){
                 case "latest": FetchNavTask fwt = new FetchNavTask(context,output,index);
-//            fwt.progressDialog.show();
                     fwt.execute();break;
 
                 case "popular":  FetchWallpTask fnt = new FetchWallpTask(context, output,index);
-//            fwt.progressDialog.show();
                     fnt.execute();break;
 
-                case "editor": FetchEditTask fet = new FetchEditTask(context,output,index);
+                case "editors_choice": FetchEditTask fet = new FetchEditTask(context,output,index);
                     fet.execute();break;
 
                 default: FetchCatTask fct = new FetchCatTask(context, output,index,type);
-//            fwt.progressDialog.show();
                     fct.execute();break;
 
             }

@@ -9,4 +9,7 @@
     <color name="up_button">#d8625e5e</color>
     <color name="scrim_30percent">#4d000000</color>
     <color name="off_white">#d3d2d2</color>
+    <color name="no_internet_back">#F7F7F7</color>
+    <color name="licence_back">#bcba87</color>
+    <color name="link">#363eab</color>
 </resources>

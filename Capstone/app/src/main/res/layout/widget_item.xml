@@ -2,8 +2,8 @@
 
 <ImageView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/widget_item"
-    android:minHeight="150dp"
-    android:minWidth="220dp"
+    android:minHeight="@dimen/widget_item_height"
+    android:minWidth="@dimen/widget_item_width"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:adjustViewBounds="true"

@@ -7,8 +7,45 @@
     <string name="action_settings">Settings</string>
     <string name="appwidget_text">Canvas Vision</string>
     <string name="add_widget">Add widget</string>
+    <string name="powered_by">Powered By:</string>
+    <string name="by">By:</string>
+    <string name="downloads">Downloads:</string>
+    <string name="favourite">Favourites:</string>
+    <string name="no_internet">no internet connection</string>
+    <string name="navigation">navigation drawer</string>
+    <string name="desc_powered_image">pixabay</string>
+    <string name="detail_image">detail image</string>
+    <string name="explore_item">Category item</string>
+    <string name="user_name">image provided by</string>
+
     <!-- AdMob ad unit IDs -->
     <string name="banner_home_footer">ca-app-pub-1060534192860592/4572822869</string>
+    <string name="license1">Copyright 2013 Square, Inc.
+        Licensed under the Apache License, Version 2.0 (the "License");
+        you may not use this file except in compliance with the License.
+        You may obtain a copy of the License at
+
+          <a href="http://www.apache.org/licenses/LICENSE-2.0"><font color="FF00CC"> http://www.apache.org/licenses/LICENSE-2.0</font></a>
+
+        Unless required by applicable law or agreed to in writing, software
+        distributed under the License is distributed on an "AS IS" BASIS,
+        WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+        See the License for the specific language governing permissions and
+        limitations under the License.</string>
+        <string name="license2">Copyright 2015 Wasabeef
+        Licensed under the Apache License, Version 2.0 (the "License");
+        you may not use this file except in compliance with the License.
+        You may obtain a copy of the License at
+
+          <a href="http://www.apache.org/licenses/LICENSE-2.0"><font color="FF00CC"> http://www.apache.org/licenses/LICENSE-2.0</font></a>
+
+        Unless required by applicable law or agreed to in writing, software
+        distributed under the License is distributed on an "AS IS" BASIS,
+        WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+        See the License for the specific language governing permissions and
+        limitations under the License.</string>
+    <string name="about"> <b>Developer:</b> \t Mudit Srivastava \n\nIndian Institute of Technology Dhanbad \n\n<b>Email:</b>\n AndroidWorkProj2908@gmail.com
+    </string>
 
 
 </resources>

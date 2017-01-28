@@ -10,6 +10,6 @@
         android:layout_height="match_parent"
         android:scaleType="fitXY"
         android:background="@color/colorPrimaryDark"
-        android:padding="2dp" />
+        android:padding="@dimen/dynamic_image_pad" />
 
 </RelativeLayout>

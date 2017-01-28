@@ -8,6 +8,25 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="drawer_content_padding">0dp</dimen>
     <dimen name="drawer_size">240dp</dimen>
+    <dimen name="card_elevation">8dp</dimen>
+    <dimen name="card_elevation_small">4dp</dimen>
+    <dimen name="text_padding">8dp</dimen>
+    <dimen name="text_padding2">4dp</dimen>
+    <dimen name="text_size0">15sp</dimen>
+    <dimen name="text_size">18sp</dimen>
+    <dimen name="text_size2">20sp</dimen>
+    <dimen name="user_size">100dp</dimen>
+    <dimen name="nav_image">82dp</dimen>
+    <dimen name="explore_item_height">200dp</dimen>
+    <dimen name="margin0">4dp</dimen>
+    <dimen name="margin">6dp</dimen>
+    <dimen name="margin1">8dp</dimen>
+    <dimen name="margin2">12dp</dimen>
+    <dimen name="margin3">16dp</dimen>
+    <dimen name="margin4">20dp</dimen>
+    <dimen name="dynamic_image_pad">2dp</dimen>
+    <dimen name="widget_item_height">150dp</dimen>
+    <dimen name="widget_item_width">220dp</dimen>
     <!--
 Refer to App Widget Documentation for margin information
 http://developer.android.com/guide/topics/appwidgets/index.html#CreatingLayout

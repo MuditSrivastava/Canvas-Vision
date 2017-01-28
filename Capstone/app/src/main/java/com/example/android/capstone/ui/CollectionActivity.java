@@ -1,5 +1,6 @@
 package com.example.android.capstone.ui;
 
+import android.content.res.Configuration;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.LoaderManager;
@@ -26,6 +27,7 @@ public class CollectionActivity extends AppCompatActivity  {
     public NetworkUtilities networkUtilities;
     public List<Hit> result;
     public static final int LOADER_ID = 1;
+    public int column_no;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -38,7 +40,8 @@ public class CollectionActivity extends AppCompatActivity  {
         getSupportActionBar().setTitle("collections");
         recyclerView_cat = (RecyclerView) findViewById(R.id.SelCatRecView);
         recyclerView_cat.setHasFixedSize(true);
-        StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+        checkScreenSize();
+        StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(column_no, StaggeredGridLayoutManager.VERTICAL);
         recyclerView_cat.setLayoutManager(staggeredGridLayoutManager);
         catAdapter = new CollectionAdapter(this);
         getSupportLoaderManager().initLoader(LOADER_ID,null, contactsLoader);
@@ -91,6 +94,33 @@ public class CollectionActivity extends AppCompatActivity  {
                     recyclerView_cat.setAdapter(catAdapter);
                 }
             };
+
+    public void checkScreenSize() {
+
+        int screenSize = getResources().getConfiguration().screenLayout &
+                Configuration.SCREENLAYOUT_SIZE_MASK;
+
+        switch (screenSize) {
+            case Configuration.SCREENLAYOUT_SIZE_XLARGE:
+
+                column_no = 4;
+                break;
+            case Configuration.SCREENLAYOUT_SIZE_UNDEFINED:
+                column_no = 3;
+                break;
+            case Configuration.SCREENLAYOUT_SIZE_LARGE:
+                column_no = 3;
+                break;
+            case Configuration.SCREENLAYOUT_SIZE_NORMAL:
+                column_no = 2;
+                break;
+            case Configuration.SCREENLAYOUT_SIZE_SMALL:
+                column_no = 2;
+                break;
+            default:
+                column_no = 2;
+        }
+    }
 }
 
 

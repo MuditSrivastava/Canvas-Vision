@@ -21,6 +21,7 @@
             android:name=".ui.MainActivity"
             android:label="@string/app_name"
             android:launchMode="singleTop"
+            android:configChanges="orientation|screenSize"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,18 +32,31 @@
         <activity
             android:name=".ui.PicDetail"
             android:label="@string/app_detail_name"
+            android:configChanges="orientation|screenSize"
             android:theme="@style/AppDetailTheme"/>
         <activity
             android:name=".ui.SelectCategory"
             android:label="@string/app_detail_name"
+            android:configChanges="orientation|screenSize"
             android:launchMode="singleTop"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".ui.NavActivity"
             android:label="@string/app_detail_name"
+            android:configChanges="orientation|screenSize"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".ui.CollectionActivity"
+            android:label="@string/app_detail_name"
+            android:configChanges="orientation|screenSize"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".ui.LicenseActivity"
+            android:label="@string/app_detail_name"
+            android:configChanges="orientation|screenSize"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".ui.AboutActivity"
             android:label="@string/app_detail_name"
             android:theme="@style/AppTheme.NoActionBar"/>
 
@@ -60,16 +74,12 @@
 
         <service android:name=".ui.widget.StackWidgetService"
             android:permission="android.permission.BIND_REMOTEVIEWS"
-            android:exported="false" />
-        <!--Include the AdActivity configChanges and theme. -->
+            android:exported="true" />
         <activity
             android:name="com.google.android.gms.ads.AdActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
             android:theme="@android:style/Theme.Translucent" />
-        <!--
-         Optionally, register AnalyticsReceiver and AnalyticsService to support background
-         dispatching on non-Google Play devices
-       -->
+
         <receiver
             android:name="com.google.android.gms.analytics.AnalyticsReceiver"
             android:enabled="true">
@@ -83,10 +93,6 @@
             android:enabled="true"
             android:exported="false" />
 
-        <!--
-             Optionally, register CampaignTrackingReceiver and CampaignTrackingService to enable
-             installation campaign reporting
-        -->
         <receiver
             android:name="com.google.android.gms.analytics.CampaignTrackingReceiver"
             android:exported="true">
