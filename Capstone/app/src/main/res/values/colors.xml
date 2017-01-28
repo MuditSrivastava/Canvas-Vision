@@ -8,4 +8,5 @@
     <color name="colorDetailAccent">#DAA520</color>
     <color name="up_button">#d8625e5e</color>
     <color name="scrim_30percent">#4d000000</color>
+    <color name="off_white">#d3d2d2</color>
 </resources>

@@ -7,9 +7,6 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.example.android.capstone.model.Pic;
-import com.example.android.capstone.network.NetworkUtilities;
-import com.example.android.capstone.network.ApiService;
-import com.example.android.capstone.network.AsyncResponse;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -19,10 +16,10 @@ import retrofit2.GsonConverterFactory;
 import retrofit2.Retrofit;
 
 /**
- * Created by DELL on 12/14/2016.
+ * Created by DELL on 1/7/2017.
  */
 
-public class FetchWallpTask extends AsyncTask <Void,Void,Pic> {
+public class FetchEditTask extends AsyncTask<Void,Void,Pic> {
 
 
 
@@ -32,17 +29,17 @@ public class FetchWallpTask extends AsyncTask <Void,Void,Pic> {
     public ProgressDialog progressDialog;
     private AsyncResponse output;
     private int index;
-    private String type;
 
 
 
-    public FetchWallpTask(Context context, NetworkUtilities networkUtilities, AsyncResponse output, int index){
+    public FetchEditTask(Context context, NetworkUtilities networkUtilities, AsyncResponse output, int index){
 
         this.context=context;
         this.networkUtilities=networkUtilities;
         this.progressDialog = new ProgressDialog(context);
         this.output=output;
         this.index=index;
+
     }
 
 
@@ -75,9 +72,7 @@ public class FetchWallpTask extends AsyncTask <Void,Void,Pic> {
 
         ApiService client = retrofit.create(ApiService.class);
         Call<Pic> call;
-        call = client.getLatestPic(index);
-
-
+        call=client.getEditorPic(index);
 
         call.enqueue(new Callback<Pic>() {
             @Override
@@ -116,6 +111,8 @@ public class FetchWallpTask extends AsyncTask <Void,Void,Pic> {
 
 
 }
+
+
 
 
 

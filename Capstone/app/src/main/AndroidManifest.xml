@@ -25,9 +25,6 @@
             android:theme="@style/AppDetailTheme"
             android:label="@string/app_detail_name"
             >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.android.capstone.ui.MainActivity" />
         </activity>
         <activity
             android:name=".ui.SelectCategory"
@@ -35,9 +32,12 @@
             android:label="@string/app_detail_name"
             android:launchMode="singleTop"
             >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.android.capstone.ui.MainActivity" />
+        </activity>
+        <activity
+            android:name=".ui.NavActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:label="@string/app_detail_name"
+            >
         </activity>
     </application>
 

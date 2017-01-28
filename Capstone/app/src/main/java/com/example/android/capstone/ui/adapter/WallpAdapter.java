@@ -22,7 +22,6 @@ import java.util.List;
 import static android.media.CamcorderProfile.get;
 import static com.example.android.capstone.R.id.imageView;
 
-
 /**
  * Created by DELL on 12/13/2016.
  */
@@ -77,7 +76,7 @@ public class WallpAdapter extends RecyclerView.Adapter<WallpViewHolder> {
         holder.discWallp.setRatio(ratio);
 
         Picasso.with(context)
-                .load(photo.getWebformatURL())
+                .load(photo.getPreviewURL())
                 .placeholder(R.drawable.plh)
                 .error(R.drawable.phe)
                 .into(holder.discWallp);

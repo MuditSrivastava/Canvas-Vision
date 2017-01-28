@@ -80,7 +80,6 @@ public class DiscoverFragment extends Fragment implements AsyncResponse {
                     loadNextDataFromApi(page);
                 }
             };
-
             scrollListener.resetState();
             // Adds the scroll listener to RecyclerView
             recyclerView.addOnScrollListener(scrollListener);
@@ -110,7 +109,7 @@ public class DiscoverFragment extends Fragment implements AsyncResponse {
         //  --> Deserialize and construct new model objects from the API response
         //  --> Append the new data objects to the existing set of items inside the array of items
         //  --> Notify the adapter of the new items made with `notifyItemRangeInserted()`
-        String type="popular";
+        String type="latest";
         wallpService = new WallpService(networkUtilities, getActivity(), this,offset,type);
         wallpService.loadWallp();
     }

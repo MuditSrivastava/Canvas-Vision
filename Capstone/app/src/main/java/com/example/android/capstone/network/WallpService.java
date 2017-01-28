@@ -30,18 +30,31 @@ public class WallpService {
 
     public void loadWallp(){
         if(networkUtilities.isInternetConnectionPresent()) {
-            if(type=="popular"){
-            FetchWallpTask fwt = new FetchWallpTask(context, networkUtilities, output,index,type);
-//            fwt.progressDialog.show();
-            fwt.execute();}
-            else{
 
-                FetchCatTask fct = new FetchCatTask(context, networkUtilities, output,index,type);
+
+            switch (type){
+                case "latest": FetchWallpTask fwt = new FetchWallpTask(context, networkUtilities, output,index);
 //            fwt.progressDialog.show();
-                fct.execute();}
+                    fwt.execute();break;
+
+                case "popular":  FetchNavTask fnt = new FetchNavTask(context, networkUtilities, output,index);
+//            fwt.progressDialog.show();
+                    fnt.execute();break;
+
+                case "editor": FetchEditTask fet = new FetchEditTask(context,networkUtilities,output,index);
+                    fet.execute();break;
+
+                default: FetchCatTask fct = new FetchCatTask(context, networkUtilities, output,index,type);
+//            fwt.progressDialog.show();
+                    fct.execute();break;
+
+            }
+
+
             }
 
         }
+
 
 
 

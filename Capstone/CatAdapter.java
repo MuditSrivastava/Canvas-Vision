@@ -27,6 +27,7 @@ import java.util.List;
  */
 
 public class CatAdapter extends RecyclerView.Adapter<WallpViewHolder>  {
+
     private List<Hit> hit;
     private Context context;
     public int width;
@@ -75,7 +76,7 @@ public class CatAdapter extends RecyclerView.Adapter<WallpViewHolder>  {
         holder.discWallp.setRatio(ratio);
 
         Picasso.with(context)
-                .load(photo.getWebformatURL())
+                .load(photo.getPreviewURL())
                 .placeholder(R.drawable.plh)
                 .error(R.drawable.phe)
                 .into(holder.discWallp);

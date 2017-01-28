@@ -5,12 +5,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
+
 import com.example.android.capstone.model.Pic;
 import com.example.android.capstone.network.AsyncResponse;
 import com.example.android.capstone.network.NetworkUtilities;
 import com.example.android.capstone.network.WallpService;
 import com.example.android.capstone.R;
-import com.example.android.capstone.ui.adapter.CatAdapter;
+import com.example.android.capstone.ui.adapter.WallpAdapter;
 import com.example.android.capstone.ui.util.EndlessRecyclerViewScrollListener;
 
 import static android.R.attr.colorAccent;
@@ -23,7 +25,7 @@ import static android.R.attr.offset;
 public class SelectCategory extends AppCompatActivity implements AsyncResponse {
 
     public static final String EXTRA_CAT = "category";
-    public CatAdapter catAdapter;
+    public WallpAdapter catAdapter;
     public RecyclerView recyclerView_cat;
     public NetworkUtilities networkUtilities;
     private EndlessRecyclerViewScrollListener scrollListener_cat;
@@ -58,7 +60,7 @@ public class SelectCategory extends AppCompatActivity implements AsyncResponse {
                };
                // Adds the scroll listener to RecyclerView
                recyclerView_cat.addOnScrollListener(scrollListener_cat);
-               catAdapter = new CatAdapter(this);
+               catAdapter = new WallpAdapter(this);
                recyclerView_cat.setAdapter(catAdapter);
            }
            else
@@ -93,6 +95,16 @@ public class SelectCategory extends AppCompatActivity implements AsyncResponse {
 
         final WallpService wallpService = new WallpService(networkUtilities, this, this,offset,type);
         wallpService.loadWallp();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) // Press Back Icon
+        {
+            finish();
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
 
