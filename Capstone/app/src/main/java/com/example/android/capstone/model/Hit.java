@@ -7,29 +7,53 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 
-public class Hit implements  Parcelable
-{
+import ckm.simple.sql_provider.annotation.SimpleSQLColumn;
+import ckm.simple.sql_provider.annotation.SimpleSQLTable;
 
+@SimpleSQLTable(table = "canvasDownload", provider = "PicProvider")
+public class Hit implements Parcelable
+{
+    @SimpleSQLColumn("col_previewHeight")
     private int previewHeight;
+    @SimpleSQLColumn("col_likes")
     private int likes;
+    @SimpleSQLColumn("col_favorites")
     private int favorites;
+    @SimpleSQLColumn("col_tags")
     private String tags;
+    @SimpleSQLColumn("col_webformatHeight")
     private int webformatHeight;
+    @SimpleSQLColumn("col_views")
     private int views;
+    @SimpleSQLColumn("col_webformatWidth")
     private int webformatWidth;
+    @SimpleSQLColumn("col_previewWidth")
     private int previewWidth;
+    @SimpleSQLColumn("col_comments")
     private int comments;
+    @SimpleSQLColumn("col_downloads")
     private int downloads;
+    @SimpleSQLColumn("col_pageURL")
     private String pageURL;
+    @SimpleSQLColumn("col_previewURL")
     private String previewURL;
+    @SimpleSQLColumn("col_webformatURL")
     private String webformatURL;
+    @SimpleSQLColumn("col_imageWidth")
     private int imageWidth;
+    @SimpleSQLColumn("col_userId")
     private int userId;
+    @SimpleSQLColumn("col_user")
     private String user;
+    @SimpleSQLColumn("col_type")
     private String type;
+    @SimpleSQLColumn("col_id")
     private int id;
+    @SimpleSQLColumn("col_userImageURL")
     private String userImageURL;
+    @SimpleSQLColumn("col_imageHeight")
     private int imageHeight;
+
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
     public final static Parcelable.Creator<Hit> CREATOR = new Creator<Hit>() {
 

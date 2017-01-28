@@ -41,6 +41,15 @@
             android:label="@string/app_detail_name"
             >
         </activity>
+        <activity
+            android:name=".ui.CollectionActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:label="@string/app_detail_name"
+            >
+        </activity>
+        <provider
+            android:authorities="com.example.android.capstone"
+            android:name="com.example.android.capstone.PicProvider"/>
     </application>
 
 </manifest>

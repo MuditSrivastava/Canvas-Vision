@@ -14,17 +14,20 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.Gravity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Toast.*;
+import com.example.android.capstone.model.CanvasDownloadTable;
 import com.example.android.capstone.model.Hit;
 import com.example.android.capstone.R;
+import com.example.android.capstone.network.NetworkUtilities;
 import com.example.android.capstone.ui.adapter.TagAdapter;
 import com.squareup.picasso.Picasso;
+
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import jp.wasabeef.picasso.transformations.CropCircleTransformation;
@@ -38,6 +41,7 @@ import jp.wasabeef.picasso.transformations.CropCircleTransformation;
 public class PicDetail extends AppCompatActivity {
 
     public static final String EXTRA_PIC = "picture";
+    public static final String origin = "caller";
 
     private Hit hit;
     private ImageView wallp;
@@ -49,13 +53,19 @@ public class PicDetail extends AppCompatActivity {
     private TextView user_id;
     private List<String> tags=new ArrayList<String>();
     int first =0;
+    public NetworkUtilities networkUtilities;
     public RecyclerView recyclerView;
     public TagAdapter tagAdapter;
+    public boolean isDownloaded=false;
+    public boolean isCallerCollection =false;
+    private Menu menu;
+    private File file;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        networkUtilities = new NetworkUtilities(this);
         setContentView(R.layout.activity_pic_detail);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_detail);
         tag_title=(TextView)findViewById(R.id.toolbar_title);
@@ -66,14 +76,7 @@ public class PicDetail extends AppCompatActivity {
         } else {
             throw new IllegalArgumentException("Detail activity must receive a Hit parcelable");
         }
-        //   String firstWord = null;
         title=hit.getTags();
-       /* if(title.contains(",")){
-            firstWord= title.substring(0, title.indexOf(","));
-        }
-        tag_title.setText(firstWord);
-tags.add(firstWord);*/
-
         while(title.contains(",")){
             String f=title.substring(0,title.indexOf(","));
             tags.add(f);
@@ -93,35 +96,57 @@ tags.add(firstWord);*/
         tagAdapter= new TagAdapter(this);
         tagAdapter.setTagList(tags);
         recyclerView.setAdapter(tagAdapter);
+        file = new File(Environment.getExternalStoragePublicDirectory("/Canvas Vision"), hit.getId() + ".jpg");
+        if(getIntent().hasExtra(origin)){
 
-        Picasso.with(this)
-                .load(hit.getWebformatURL())
-                .into(wallp);
+
+            Picasso.with(this)
+                    .load(file)
+                    .placeholder(R.drawable.plh)
+                    .error(R.drawable.phe)
+                    .into(wallp);
+            isCallerCollection=true;
+        }
+        else {
+            Picasso.with(this)
+                    .load(hit.getWebformatURL())
+                    .placeholder(R.drawable.plh)
+                    .into(wallp);
+        }
         user_id.setText(hit.getUser());
         downloads.setText(String.valueOf(hit.getDownloads()));
         fav.setText(String.valueOf(hit.getFavorites()));
-        if(!hit.getUserImageURL().isEmpty()) {
-            Picasso.with(this)
-                    .load(hit.getUserImageURL())
-                    .transform(new CropCircleTransformation())
-                    .into(user_image);
-
-
-        }
-        else {
+        if(!networkUtilities.isInternetConnectionPresent()){
             Picasso.with(this)
                     .load(R.drawable.memb)
                     .transform(new CropCircleTransformation())
                     .into(user_image);
         }
+        else {
+            if (!hit.getUserImageURL().isEmpty()) {
+                Picasso.with(this)
+                        .load(hit.getUserImageURL())
+                        .transform(new CropCircleTransformation())
+                        .into(user_image);
 
+
+            } else {
+                Picasso.with(this)
+                        .load(R.drawable.memb)
+                        .transform(new CropCircleTransformation())
+                        .into(user_image);
+            }
+        }
         IntentFilter filter = new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE);
         registerReceiver(downloadReceiver, filter);
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_details, menu);
+        if(!isCallerCollection){
+            this.menu=menu;
+        getMenuInflater().inflate(R.menu.menu_details, menu);}
+
         return true;
     }
 
@@ -133,11 +158,36 @@ tags.add(firstWord);*/
         }
 
         if (item.getItemId() == R.id.action_down) {
-            //  DownTask dt= new DownTask(this,hit.getWebformatURL());
-            // dt.execute();
-            Uri image_uri = Uri.parse(hit.getWebformatURL());
-            DownloadData(image_uri);
+            if(!fileExistance()) {
 
+                    Uri image_uri = Uri.parse(hit.getWebformatURL());
+                    DownloadData(image_uri);
+                    item.setEnabled(false);
+
+            }
+            else{
+                Toast toast = Toast.makeText(this,"Image Already Downloaded", Toast.LENGTH_SHORT);
+                toast.show();
+            }
+        }
+
+        if(item.getItemId()==R.id.action_set){
+
+            if(fileExistance()) {
+
+                Uri sendUri2 = Uri.fromFile(file);
+                Log.d("URI:", sendUri2.toString());
+
+                Intent intent = new Intent(Intent.ACTION_ATTACH_DATA);
+                intent.setDataAndType(sendUri2, "image/jpg");
+                intent.putExtra("mimeType", "image/jpg");
+                startActivityForResult(Intent.createChooser(intent, "Set As"), 200);
+            }
+            else{
+                Toast toast = Toast.makeText(this,"Please Download First", Toast.LENGTH_LONG);
+                toast.show();
+
+            }
 
 
         }
@@ -159,7 +209,7 @@ tags.add(firstWord);*/
         request.setDescription("Downloading from Canvas Vision");
 
        // request.setDestinationInExternalFilesDir(this, Environment.DIRECTORY_PICTURES,"AndroidTutorialPoint.jpg");
-        request.setDestinationInExternalPublicDir("/Canvas Vision",tags.get(0)+".jpg");
+        request.setDestinationInExternalPublicDir("/Canvas Vision",hit.getId()+".jpg");
 
         //Enqueue download and save into referenceId
         downloadReference = downloadManager.enqueue(request);
@@ -172,13 +222,15 @@ tags.add(firstWord);*/
         @Override
         public void onReceive(Context context, Intent intent) {
 
-            //check if the broadcast message is for our enqueued download
-           // long referenceId = intent.getLongExtra(DownloadManager.EXTRA_DOWNLOAD_ID, -1);
 
-
-                Toast toast = Toast.makeText(context,tags.get(0)+".jpg Download Complete", Toast.LENGTH_LONG);
-               // toast.setGravity(Gravity.TOP, 25, 400);
+                Toast toast = Toast.makeText(context,tags.get(0)+".jpg Download Complete", Toast.LENGTH_SHORT);
                 toast.show();
+
+            getContentResolver().insert(CanvasDownloadTable.CONTENT_URI,CanvasDownloadTable.getContentValues(hit,false));
+            isDownloaded=true;
+            MenuItem menuItem=menu.findItem( R.id.action_down);
+            menuItem.setEnabled(true);
+
 
         }
     };
@@ -196,6 +248,10 @@ tags.add(firstWord);*/
         }
         super.onDestroy();
 
+    }
+
+    public boolean fileExistance(){
+        return file.exists();
     }
 
 

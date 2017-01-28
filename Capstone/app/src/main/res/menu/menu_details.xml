@@ -4,6 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ui.PicDetail">
     <item
+        android:id="@+id/action_set"
+        android:orderInCategory="300"
+        android:title="Set As"
+        android:icon="@drawable/set2"
+        app:showAsAction="always" />
+    <item
         android:id="@+id/action_down"
         android:orderInCategory="300"
         android:title="Download"
