@@ -5,9 +5,8 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
 import com.example.android.capstone.MyApplication;
+import com.example.android.capstone.R;
 import com.example.android.capstone.model.Pic;
-import okhttp3.OkHttpClient;
-import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.GsonConverterFactory;
@@ -29,16 +28,9 @@ public class FetchNavTask extends AsyncTask<Void,Void,Pic> {
     @Override
     protected Pic doInBackground(Void... params) {
 
-        HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
-        logging.setLevel(HttpLoggingInterceptor.Level.BODY);
-        OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
-
-        httpClient.addInterceptor(logging);
-
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://pixabay.com/api/")
+              Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(context.getResources().getString(R.string.pixabay_api_link))
                 .addConverterFactory(GsonConverterFactory.create())
-                .client(httpClient.build())
                 .build();
 
         ApiService client = retrofit.create(ApiService.class);
@@ -50,7 +42,7 @@ public class FetchNavTask extends AsyncTask<Void,Void,Pic> {
 
                 try{
                     if(!response.isSuccess()){
-                        Log.d("No Success",response.errorBody().string());
+                        Log.d(context.getResources().getString(R.string.No_Success),response.errorBody().string());
                     }
                     else{
                         picResult=response.body();
@@ -70,7 +62,7 @@ public class FetchNavTask extends AsyncTask<Void,Void,Pic> {
 
             @Override
             public void onFailure(Throwable t) {
-                Toast toast = Toast.makeText(context, "Something Went Wrong!", Toast.LENGTH_SHORT);
+                Toast toast = Toast.makeText(context,  context.getResources().getString(R.string.wrong_message), Toast.LENGTH_SHORT);
                 toast.show();
 
             }

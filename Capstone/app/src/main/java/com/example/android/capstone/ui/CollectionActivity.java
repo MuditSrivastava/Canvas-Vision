@@ -37,7 +37,7 @@ public class CollectionActivity extends AppCompatActivity  {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_category);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("collections");
+        getSupportActionBar().setTitle(R.string.collection_string);
         recyclerView_coll = (RecyclerView) findViewById(R.id.SelCatRecView);
         recyclerView_coll.setHasFixedSize(true);
         checkScreenSize();

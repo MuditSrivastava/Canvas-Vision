@@ -9,8 +9,6 @@ import com.google.android.gms.analytics.Tracker;
 
 
 public class MyApplication extends Application {
-    public static final String TAG = MyApplication.class
-            .getSimpleName();
 
     private static MyApplication mInstance;
 

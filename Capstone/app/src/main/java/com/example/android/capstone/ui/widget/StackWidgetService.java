@@ -59,7 +59,7 @@ class StackRemoteViewsFactory implements RemoteViewsService.RemoteViewsFactory {
 
     public RemoteViews getViewAt(int position) {
 
-        File file = new File(Environment.getExternalStoragePublicDirectory("/Canvas Vision"), mWidgetItems.get(position).getId() + ".jpg");
+        File file = new File(Environment.getExternalStoragePublicDirectory("/"+mContext.getResources().getString(R.string.app_name)), mWidgetItems.get(position).getId() +mContext.getResources().getString(R.string.jpg) );
 
         BitmapFactory.Options options = new BitmapFactory.Options();
         options.inPreferredConfig = Bitmap.Config.ARGB_8888;
@@ -74,7 +74,7 @@ class StackRemoteViewsFactory implements RemoteViewsService.RemoteViewsFactory {
 
 
         try {
-            System.out.println("Loading view " + position);
+            System.out.println(mContext.getResources().getString(R.string.Loading_view) + position);
             Thread.sleep(500);
         } catch (InterruptedException e) {
             MyApplication.getInstance().trackException(e);

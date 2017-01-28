@@ -43,7 +43,7 @@ public class StackWidgetProvider extends AppWidgetProvider {
             List<Hit> mWidgetItems = CanvasDownloadTable.getRows(context.getContentResolver().query(CanvasDownloadTable.CONTENT_URI, null, null, null, null), true);
             Intent intent_detail = new Intent(context, PicDetail.class);
             intent_detail.putExtra(PicDetail.EXTRA_PIC, mWidgetItems.get(viewIndex));
-            intent_detail.putExtra(PicDetail.origin,"widget");
+            intent_detail.putExtra(PicDetail.origin,context.getResources().getString(R.string.widget));
             intent_detail.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intent_detail);
         }

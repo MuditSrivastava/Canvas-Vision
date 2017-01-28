@@ -16,6 +16,8 @@ import com.example.android.capstone.ui.adapter.ExploreAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.example.android.capstone.R.drawable.science;
+
 
 public class ExploreFragment extends Fragment {
 
@@ -42,7 +44,7 @@ public class ExploreFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        MyApplication.getInstance().trackScreenView("ExploreFragment");
+        MyApplication.getInstance().trackScreenView(getResources().getString(R.string.explorefragment));
     }
 
     @Override
@@ -61,26 +63,26 @@ public class ExploreFragment extends Fragment {
     }
 
     public void populate(){
-        categoryList.add(new Category("Animals","animals"));
-        categoryList.add(new Category("Textures","backgrounds"));
-        categoryList.add(new Category("Architecture","buildings"));
-        categoryList.add(new Category("Business","business"));
-        categoryList.add(new Category("Communication","computer"));
-        categoryList.add(new Category("Education","education"));
-        categoryList.add(new Category("Fashion","fashion"));
-        categoryList.add(new Category("Emotions","feelings"));
-        categoryList.add(new Category("Food","food"));
-        categoryList.add(new Category("Health","health"));
-        categoryList.add(new Category("Craft","industry"));
-        categoryList.add(new Category("Music","music"));
-        categoryList.add(new Category("Nature","nature"));
-        categoryList.add(new Category("People","people"));
-        categoryList.add(new Category("Places","places"));
-        categoryList.add(new Category("Religion","religion"));
-        categoryList.add(new Category("Technology","science"));
-        categoryList.add(new Category("Sports","sports"));
-        categoryList.add(new Category("Transportation","transportation"));
-        categoryList.add(new Category("Travel","travel"));
+        categoryList.add(new Category(getResources().getString(R.string.Animals),getResources().getString(R.string.animals)));
+        categoryList.add(new Category(getResources().getString(R.string.Textures),getResources().getString(R.string.backgrounds)));
+        categoryList.add(new Category(getResources().getString(R.string.Architecture),getResources().getString(R.string.buildings)));
+        categoryList.add(new Category(getResources().getString(R.string.Business),getResources().getString(R.string.business)));
+        categoryList.add(new Category(getResources().getString(R.string.Communication),getResources().getString(R.string.computer)));
+        categoryList.add(new Category(getResources().getString(R.string.Education),getResources().getString(R.string.education)));
+        categoryList.add(new Category(getResources().getString(R.string.Fashion),getResources().getString(R.string.fashion)));
+        categoryList.add(new Category(getResources().getString(R.string.Emotions),getResources().getString(R.string.feelings)));
+        categoryList.add(new Category(getResources().getString(R.string.Food),getResources().getString(R.string.food)));
+        categoryList.add(new Category(getResources().getString(R.string.Health),getResources().getString(R.string.health)));
+        categoryList.add(new Category(getResources().getString(R.string.Craft),getResources().getString(R.string.industry)));
+        categoryList.add(new Category(getResources().getString(R.string.Music),getResources().getString(R.string.music)));
+        categoryList.add(new Category(getResources().getString(R.string.Nature),getResources().getString(R.string.nature)));
+        categoryList.add(new Category(getResources().getString(R.string.People),getResources().getString(R.string.people)));
+        categoryList.add(new Category(getResources().getString(R.string.Places),getResources().getString(R.string.places)));
+        categoryList.add(new Category(getResources().getString(R.string.Religion),getResources().getString(R.string.religion)));
+        categoryList.add(new Category(getResources().getString(R.string.Technology),getResources().getString(R.string.science)));
+        categoryList.add(new Category(getResources().getString(R.string.Sports),getResources().getString(R.string.sports)));
+        categoryList.add(new Category(getResources().getString(R.string.Transportation),getResources().getString(R.string.transportation)));
+        categoryList.add(new Category(getResources().getString(R.string.Travel),getResources().getString(R.string.travel)));
     }
 
     public void checkScreenSize() {

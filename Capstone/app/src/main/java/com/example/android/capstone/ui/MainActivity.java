@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         TextView myTitle = (TextView) toolbar.getChildAt(0);
-        Typeface tf = Typeface.createFromAsset(getAssets(),"fonts/Satisfy-Regular.ttf");
+        Typeface tf = Typeface.createFromAsset(getAssets(),getResources().getString(R.string.font_name));
         myTitle.setTypeface(tf,Typeface.BOLD);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity
         toggle.syncState();
         AdView mAdView = (AdView)findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder()
-                .addTestDevice("CADD03C7EC8C7AD4D6073860CC9B3BF7")
+                .addTestDevice(getResources().getString(R.string.ad_device_test))
                 .build();
         mAdView.loadAd(adRequest);
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
@@ -71,12 +71,12 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_latest) {
             Intent intent = new Intent(this, NavActivity.class);
-            intent.putExtra(NavActivity.Extra_id, "latest");
+            intent.putExtra(NavActivity.Extra_id, getResources().getString(R.string.latest_small));
             this.startActivity(intent);
 
         } else if (id == R.id.nav_editor) {
             Intent intent = new Intent(this, NavActivity.class);
-            intent.putExtra(NavActivity.Extra_id, "editors_choice");
+            intent.putExtra(NavActivity.Extra_id, getResources().getString(R.string.editor_small));
             this.startActivity(intent);
 
         }  else if (id == R.id.nav_collection) {

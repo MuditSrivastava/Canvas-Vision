@@ -19,7 +19,7 @@ public class LicenseActivity extends AppCompatActivity{
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_license);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("License");
+        getSupportActionBar().setTitle(getResources().getString(R.string.License));
         TextView t = (TextView) findViewById(R.id.license);
         t.setMovementMethod(LinkMovementMethod.getInstance());
         TextView t2 = (TextView) findViewById(R.id.license2);

@@ -22,13 +22,13 @@ public class AboutActivity  extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_about);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("About Us");
+        getSupportActionBar().setTitle(R.string.about_us);
         ImageView iv = (ImageView)findViewById(R.id.aboutimage);
         iv.setOnClickListener(new View.OnClickListener()
         {
             public void onClick(View arg0)
             {
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://pixabay.com")));
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(getResources().getString(R.string.pixabay_link))));
             }
         });
     }

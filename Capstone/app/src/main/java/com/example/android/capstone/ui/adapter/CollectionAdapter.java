@@ -42,7 +42,7 @@ public class CollectionAdapter extends RecyclerView.Adapter<WallpViewHolder> {
                 int position = rcv.getAdapterPosition();
                 Intent intent = new Intent(context, PicDetail.class);
                 intent.putExtra(PicDetail.EXTRA_PIC, hit.get(position));
-                intent.putExtra(PicDetail.origin,"collection");
+                intent.putExtra(PicDetail.origin,R.string.collection_string);
                 context.startActivity(intent);
             }
         });
@@ -61,7 +61,7 @@ public class CollectionAdapter extends RecyclerView.Adapter<WallpViewHolder> {
         rlp.height = (int) (rlp.width * ratio);
         holder.discWallp.setLayoutParams(rlp);
         holder.discWallp.setRatio(ratio);
-        File file = new File(Environment.getExternalStoragePublicDirectory("/Canvas Vision"), photo.getId()+".jpg");
+        File file = new File(Environment.getExternalStoragePublicDirectory("/"+R.string.app_name), photo.getId()+context.getResources().getString(R.string.jpg));
         Picasso.with(context)
                 .load(file)
                 .placeholder(R.drawable.plh)

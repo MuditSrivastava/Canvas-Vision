@@ -50,7 +50,7 @@ public class DiscoverFragment extends Fragment implements AsyncResponse {
     public void onResume() {
         super.onResume();
 
-        MyApplication.getInstance().trackScreenView("DiscoverFragment");
+        MyApplication.getInstance().trackScreenView(getResources().getString(R.string.discoverfragment));
     }
 
     @Override
@@ -90,7 +90,7 @@ public class DiscoverFragment extends Fragment implements AsyncResponse {
     }
 
     public void loadNextDataFromApi(int offset) {
-        String type="popular";
+        String type=getResources().getString(R.string.popular);
         wallpService = new WallpService(networkUtilities, getActivity(), this,offset,type);
         wallpService.loadWallp();
     }

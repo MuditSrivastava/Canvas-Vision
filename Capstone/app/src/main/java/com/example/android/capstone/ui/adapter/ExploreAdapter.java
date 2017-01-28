@@ -47,7 +47,7 @@ public class ExploreAdapter extends RecyclerView.Adapter<ExploreViewHolder> {
     public void onBindViewHolder(ExploreViewHolder holder, int position) {
 
         Category category = categoryList.get(position);
-        int id = context.getResources().getIdentifier("com.example.android.capstone:drawable/" + category.getCategory_draw_id(), null, null);
+        int id = context.getResources().getIdentifier(context.getResources().getString(R.string.package_drawable)+category.getCategory_draw_id(), null, null);
         holder.category_name.setText(category.getCategory_name());
         holder.category.setImageResource(id);
     }

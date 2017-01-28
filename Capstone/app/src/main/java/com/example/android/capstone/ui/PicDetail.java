@@ -86,7 +86,7 @@ public class PicDetail extends AppCompatActivity {
         tagAdapter= new TagAdapter(this);
         tagAdapter.setTagList(tags);
         recyclerView.setAdapter(tagAdapter);
-        file = new File(Environment.getExternalStoragePublicDirectory("/Canvas Vision"), hit.getId() + ".jpg");
+        file = new File(Environment.getExternalStoragePublicDirectory("/"+getResources().getString(R.string.app_name)), hit.getId() + getResources().getString(R.string.jpg));
         if(getIntent().hasExtra(origin)){
 
             Picasso.with(this)
@@ -157,7 +157,7 @@ public class PicDetail extends AppCompatActivity {
 
             }
             else{
-                Toast toast = Toast.makeText(this,"Image Already Downloaded", Toast.LENGTH_SHORT);
+                Toast toast = Toast.makeText(this,getResources().getString(R.string.image_downloaded), Toast.LENGTH_SHORT);
                 toast.show();
             }
         }
@@ -166,14 +166,14 @@ public class PicDetail extends AppCompatActivity {
 
             if(fileExistance()) {
                 Uri sendUri2 = Uri.fromFile(file);
-                Log.d("URI:", sendUri2.toString());
+                Log.d(getResources().getString(R.string.URI), sendUri2.toString());
                 Intent intent = new Intent(Intent.ACTION_ATTACH_DATA);
-                intent.setDataAndType(sendUri2, "image/jpg");
-                intent.putExtra("mimeType", "image/jpg");
-                startActivityForResult(Intent.createChooser(intent, "Set As"), 200);
+                intent.setDataAndType(sendUri2, getResources().getString(R.string.image_jpg));
+                intent.putExtra(getResources().getString(R.string.mimeType), getResources().getString(R.string.image_jpg));
+                startActivityForResult(Intent.createChooser(intent, getResources().getString(R.string.Set_As)), 200);
             }
             else{
-                Toast toast = Toast.makeText(this,"Please Download First", Toast.LENGTH_LONG);
+                Toast toast = Toast.makeText(this,getResources().getString(R.string.first_down), Toast.LENGTH_LONG);
                 toast.show();
             }
         }
@@ -185,9 +185,9 @@ public class PicDetail extends AppCompatActivity {
         long downloadReference;
         DownloadManager downloadManager = (DownloadManager)getSystemService(DOWNLOAD_SERVICE);
         DownloadManager.Request request = new DownloadManager.Request(uri);
-        request.setTitle(tags.get(0)+".jpg Download");
-        request.setDescription("Downloading from Canvas Vision");
-        request.setDestinationInExternalPublicDir("/Canvas Vision",hit.getId()+".jpg");
+        request.setTitle(tags.get(0)+getResources().getString(R.string.down));
+        request.setDescription(getResources().getString(R.string.down_canvas));
+        request.setDestinationInExternalPublicDir("/"+getResources().getString(R.string.app_name),hit.getId()+getResources().getString(R.string.jpg));
         downloadReference = downloadManager.enqueue(request);
         getContentResolver().insert(CanvasDownloadTable.CONTENT_URI,CanvasDownloadTable.getContentValues(hit,false));
         getContentResolver().notifyChange(CanvasDownloadTable.CONTENT_URI, null);
@@ -200,7 +200,7 @@ public class PicDetail extends AppCompatActivity {
         @Override
         public void onReceive(Context context, Intent intent) {
 
-            Toast toast = Toast.makeText(context,tags.get(0)+".jpg Download Complete", Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(context,tags.get(0)+getResources().getString(R.string.down_complete), Toast.LENGTH_SHORT);
             toast.show();
             isDownloaded=true;
             MenuItem menuItem=menu.findItem( R.id.action_down);
@@ -210,7 +210,6 @@ public class PicDetail extends AppCompatActivity {
 
     @Override
     public void onDestroy() {
-        // TODO Auto-generated method stub
         try{
             if(downloadReceiver!=null)
                 unregisterReceiver(downloadReceiver);
