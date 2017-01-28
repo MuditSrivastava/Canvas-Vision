@@ -18,10 +18,10 @@ import com.example.android.capstone.ui.util.EndlessRecyclerViewScrollListener;
 public class NavActivity extends AppCompatActivity implements AsyncResponse {
 
     public static final String Extra_id = "nav_id";
-    public WallpAdapter catAdapter;
-    public RecyclerView recyclerView_cat;
+    public WallpAdapter navAdapter;
+    public RecyclerView recyclerView_nav;
     public NetworkUtilities networkUtilities;
-    private EndlessRecyclerViewScrollListener scrollListener_cat;
+    private EndlessRecyclerViewScrollListener scrollListener_nav;
     private String type;
     public int column_no;
 
@@ -38,20 +38,20 @@ public class NavActivity extends AppCompatActivity implements AsyncResponse {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setTitle(type);
             loadNextDataFromApi(1);
-            recyclerView_cat = (RecyclerView) findViewById(R.id.SelCatRecView);
-            recyclerView_cat.setHasFixedSize(true);
+            recyclerView_nav = (RecyclerView) findViewById(R.id.SelCatRecView);
+            recyclerView_nav.setHasFixedSize(true);
             checkScreenSize();
             StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(column_no, StaggeredGridLayoutManager.VERTICAL);
-            recyclerView_cat.setLayoutManager(staggeredGridLayoutManager);
-            scrollListener_cat = new EndlessRecyclerViewScrollListener(staggeredGridLayoutManager) {
+            recyclerView_nav.setLayoutManager(staggeredGridLayoutManager);
+            scrollListener_nav = new EndlessRecyclerViewScrollListener(staggeredGridLayoutManager) {
                 @Override
                 public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
                     loadNextDataFromApi(page);
                 }
             };
-            recyclerView_cat.addOnScrollListener(scrollListener_cat);
-            catAdapter = new WallpAdapter(this);
-            recyclerView_cat.setAdapter(catAdapter);
+            recyclerView_nav.addOnScrollListener(scrollListener_nav);
+            navAdapter = new WallpAdapter(this);
+            recyclerView_nav.setAdapter(navAdapter);
         }
         else
             setContentView(R.layout.fragment_no_internet);
@@ -62,7 +62,7 @@ public class NavActivity extends AppCompatActivity implements AsyncResponse {
 
         if(output.getHits()!=null)
         {
-            catAdapter.setPicList(output);
+            navAdapter.setPicList(output);
         }
     }
     @Override

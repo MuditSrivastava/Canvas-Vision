@@ -1,7 +1,6 @@
 package com.example.android.capstone.analytics;
 
 import android.content.Context;
-
 import com.example.android.capstone.R;
 import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.Tracker;

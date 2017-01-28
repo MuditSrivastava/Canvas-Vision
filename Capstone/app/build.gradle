@@ -19,7 +19,7 @@ android {
     }
 
     buildTypes.each {
-        it.buildConfigField 'String', 'API_KEY', "\"pixabay_api_here\""
+        it.buildConfigField 'String', 'API_KEY', "\"pixabay_api_key_here\""
     }
 }
 

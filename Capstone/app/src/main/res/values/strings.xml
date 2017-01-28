@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Canvas Vision</string>
-
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="app_detail_name"> </string>
@@ -16,10 +15,19 @@
     <string name="desc_powered_image">pixabay</string>
     <string name="detail_image">detail image</string>
     <string name="explore_item">Category item</string>
+    <string name="latest">Latest</string>
+    <string name="editor">Editor\'s Choice</string>
+    <string name="collection">My Collection</string>
+    <string name="about_us">About Us</string>
+    <string name="license">License</string>
+    <string name="info">Info</string>
+    <string name="set_as">Set As</string>
+    <string name="download">Download</string>
     <string name="user_name">image provided by</string>
 
     <!-- AdMob ad unit IDs -->
     <string name="banner_home_footer">ca-app-pub-1060534192860592/4572822869</string>
+
     <string name="license1">Copyright 2013 Square, Inc.
         Licensed under the Apache License, Version 2.0 (the "License");
         you may not use this file except in compliance with the License.
@@ -44,8 +52,7 @@
         WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
         See the License for the specific language governing permissions and
         limitations under the License.</string>
-    <string name="about"> <b>Developer:</b> \t Mudit Srivastava \n\nIndian Institute of Technology Dhanbad \n\n<b>Email:</b>\n AndroidWorkProj2908@gmail.com
+    <string name="about"> <b>Developer:</b> \t Mudit Srivastava \n\nIndian Institute of Technology Dhanbad \n\n<b>Email:</b>\n\n AndroidWorkProj2908@gmail.com
     </string>
-
 
 </resources>

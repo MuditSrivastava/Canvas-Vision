@@ -14,7 +14,6 @@ import com.example.android.capstone.R;
 
 public class AboutActivity  extends AppCompatActivity {
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,7 +26,6 @@ public class AboutActivity  extends AppCompatActivity {
         ImageView iv = (ImageView)findViewById(R.id.aboutimage);
         iv.setOnClickListener(new View.OnClickListener()
         {
-
             public void onClick(View arg0)
             {
                 startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://pixabay.com")));

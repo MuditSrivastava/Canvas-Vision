@@ -6,7 +6,6 @@ import android.support.v7.widget.Toolbar;
 import android.text.method.LinkMovementMethod;
 import android.view.MenuItem;
 import android.widget.TextView;
-
 import com.example.android.capstone.R;
 
 public class LicenseActivity extends AppCompatActivity{

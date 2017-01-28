@@ -1,8 +1,5 @@
 package com.example.android.capstone.model;
 
-/**
- * Created by DELL on 1/2/2017.
- */
 
 public class Category {
     private String category_name;

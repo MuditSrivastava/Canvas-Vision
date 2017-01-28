@@ -6,7 +6,7 @@
     <item
         android:id="@+id/action_set"
         android:orderInCategory="300"
-        android:title="Set As"
+        android:title="@string/set_as"
         android:icon="@drawable/ic_photo"
         app:showAsAction="always" />
     </menu>

@@ -1,7 +1,6 @@
 package  com.example.android.capstone.ui.widget;
 
 import android.appwidget.AppWidgetProvider;
-
 import com.example.android.capstone.R;
 import com.example.android.capstone.model.CanvasDownloadTable;
 import com.example.android.capstone.model.Hit;
@@ -12,12 +11,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.widget.RemoteViews;
-
-
 import java.util.List;
 
 public class StackWidgetProvider extends AppWidgetProvider {
-    public static final String TOAST_ACTION = "com.example.android.stackwidget.TOAST_ACTION";
+    public static final String WIDGET_ACTION = "com.example.android.stackwidget.WIDGET_ACTION";
     public static final String EXTRA_ITEM = "com.example.android.stackwidget.EXTRA_ITEM";
 
     @Override
@@ -38,7 +35,7 @@ public class StackWidgetProvider extends AppWidgetProvider {
     @Override
     public void onReceive(Context context, Intent intent) {
         AppWidgetManager mgr = AppWidgetManager.getInstance(context);
-        if (intent.getAction().equals(TOAST_ACTION)) {
+        if (intent.getAction().equals(WIDGET_ACTION)) {
             int appWidgetId = intent.getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_ID,
                     AppWidgetManager.INVALID_APPWIDGET_ID);
             int viewIndex = intent.getIntExtra(EXTRA_ITEM, 0);
@@ -65,13 +62,13 @@ public class StackWidgetProvider extends AppWidgetProvider {
 
             rv.setEmptyView(R.id.stack_view, R.id.empty_view);
 
-            Intent toastIntent = new Intent(context, StackWidgetProvider.class);
-            toastIntent.setAction(StackWidgetProvider.TOAST_ACTION);
-            toastIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetIds[i]);
+            Intent widgetIntent = new Intent(context, StackWidgetProvider.class);
+            widgetIntent.setAction(StackWidgetProvider.WIDGET_ACTION);
+            widgetIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetIds[i]);
             intent.setData(Uri.parse(intent.toUri(Intent.URI_INTENT_SCHEME)));
-            PendingIntent toastPendingIntent = PendingIntent.getBroadcast(context, 0, toastIntent,
+            PendingIntent widgetPendingIntent = PendingIntent.getBroadcast(context, 0, widgetIntent,
                     PendingIntent.FLAG_UPDATE_CURRENT);
-            rv.setPendingIntentTemplate(R.id.stack_view, toastPendingIntent);
+            rv.setPendingIntentTemplate(R.id.stack_view, widgetPendingIntent);
 
             appWidgetManager.updateAppWidget(appWidgetIds[i], rv);
         }

@@ -60,6 +60,7 @@
                     android:src="@drawable/pixabay"
                     android:id="@+id/aboutimage"
                     android:clickable="true"
+                    android:padding="@dimen/text_padding"
                     android:contentDescription="@string/desc_powered_image"
                     android:layout_gravity="center_horizontal"/>
             </android.support.v7.widget.CardView>

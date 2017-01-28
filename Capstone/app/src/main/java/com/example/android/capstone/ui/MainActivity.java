@@ -69,25 +69,25 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.nav_latest) {
             Intent intent = new Intent(this, NavActivity.class);
             intent.putExtra(NavActivity.Extra_id, "latest");
             this.startActivity(intent);
 
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.nav_editor) {
             Intent intent = new Intent(this, NavActivity.class);
             intent.putExtra(NavActivity.Extra_id, "editors_choice");
             this.startActivity(intent);
 
-        }  else if (id == R.id.nav_manage) {
+        }  else if (id == R.id.nav_collection) {
             Intent intent = new Intent(this, CollectionActivity.class);
             this.startActivity(intent);
 
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.nav_about) {
             Intent intent= new Intent(this,AboutActivity.class);
             this.startActivity(intent);
 
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_license) {
             Intent intent= new Intent(this,LicenseActivity.class);
             this.startActivity(intent);
 

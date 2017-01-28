@@ -22,8 +22,8 @@ import java.util.List;
 
 public class CollectionActivity extends AppCompatActivity  {
 
-    public CollectionAdapter catAdapter;
-    public RecyclerView recyclerView_cat;
+    public CollectionAdapter collectionAdapter;
+    public RecyclerView recyclerView_coll;
     public NetworkUtilities networkUtilities;
     public List<Hit> result;
     public static final int LOADER_ID = 1;
@@ -38,12 +38,12 @@ public class CollectionActivity extends AppCompatActivity  {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("collections");
-        recyclerView_cat = (RecyclerView) findViewById(R.id.SelCatRecView);
-        recyclerView_cat.setHasFixedSize(true);
+        recyclerView_coll = (RecyclerView) findViewById(R.id.SelCatRecView);
+        recyclerView_coll.setHasFixedSize(true);
         checkScreenSize();
         StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(column_no, StaggeredGridLayoutManager.VERTICAL);
-        recyclerView_cat.setLayoutManager(staggeredGridLayoutManager);
-        catAdapter = new CollectionAdapter(this);
+        recyclerView_coll.setLayoutManager(staggeredGridLayoutManager);
+        collectionAdapter = new CollectionAdapter(this);
         getSupportLoaderManager().initLoader(LOADER_ID,null, contactsLoader);
     }
 
@@ -83,15 +83,15 @@ public class CollectionActivity extends AppCompatActivity  {
                 @Override
                 public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
                     result = CanvasDownloadTable.getRows(cursor, true);
-                    catAdapter.setHitList(result);
-                    recyclerView_cat.setAdapter(catAdapter);
+                    collectionAdapter.setHitList(result);
+                    recyclerView_coll.setAdapter(collectionAdapter);
                 }
 
                 @Override
                 public void onLoaderReset(Loader<Cursor> loader) {
                     result = new ArrayList<>();
-                    catAdapter.setHitList(result);
-                    recyclerView_cat.setAdapter(catAdapter);
+                    collectionAdapter.setHitList(result);
+                    recyclerView_coll.setAdapter(collectionAdapter);
                 }
             };
 

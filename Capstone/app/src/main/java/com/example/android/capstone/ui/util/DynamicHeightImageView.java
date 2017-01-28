@@ -10,14 +10,9 @@ import android.widget.ImageView;
 
 import static android.R.attr.width;
 
-/**
- * Created by DELL on 12/29/2016.
- */
 
 public class DynamicHeightImageView extends ImageView {
     private float whRatio = 0;
-
-
 
     public DynamicHeightImageView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -26,7 +21,6 @@ public class DynamicHeightImageView extends ImageView {
     public DynamicHeightImageView(Context context) {
         super(context);
     }
-
 
     public void setRatio(float ratio) {
         whRatio = ratio;

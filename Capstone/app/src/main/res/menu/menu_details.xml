@@ -6,13 +6,13 @@
     <item
         android:id="@+id/action_set"
         android:orderInCategory="300"
-        android:title="Set As"
+        android:title="@string/set_as"
         android:icon="@drawable/ic_photo"
         app:showAsAction="always" />
     <item
         android:id="@+id/action_down"
         android:orderInCategory="300"
-        android:title="Download"
+        android:title="@string/download"
         android:icon="@drawable/ic_download"
         app:showAsAction="always" />
 

@@ -3,30 +3,30 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
+            android:id="@+id/nav_latest"
             android:icon="@drawable/ic_menu_camera"
-            android:title="Latest" />
+            android:title="@string/latest" />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/nav_editor"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="Editor's Choice" />
+            android:title="@string/editor" />
         <item
-            android:id="@+id/nav_manage"
+            android:id="@+id/nav_collection"
             android:icon="@drawable/ic_menu_collect"
-            android:title="My Collection" />
+            android:title="@string/collection" />
 
     </group>
 
-    <item android:title="Info">
+    <item android:title="@string/info">
         <menu>
             <item
-                android:id="@+id/nav_share"
+                android:id="@+id/nav_about"
                 android:icon="@drawable/ic_menu_info"
-                android:title="About Us" />
+                android:title="@string/about_us" />
             <item
-                android:id="@+id/nav_send"
+                android:id="@+id/nav_license"
                 android:icon="@drawable/ic_menu_send"
-                android:title="License" />
+                android:title="@string/license" />
         </menu>
     </item>
 

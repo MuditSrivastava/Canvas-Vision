@@ -10,13 +10,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import com.example.android.capstone.MyApplication;
 import com.example.android.capstone.ui.util.EndlessRecyclerViewScrollListener;
-import com.example.android.capstone.model.Hit;
 import com.example.android.capstone.model.Pic;
 import com.example.android.capstone.network.NetworkUtilities;
 import com.example.android.capstone.network.WallpService;
 import com.example.android.capstone.R;
-import java.util.ArrayList;
-import java.util.List;
 import com.example.android.capstone.ui.adapter.WallpAdapter;
 import com.example.android.capstone.network.AsyncResponse;
 
@@ -24,7 +21,6 @@ import com.example.android.capstone.network.AsyncResponse;
 public class DiscoverFragment extends Fragment implements AsyncResponse {
 
     public WallpAdapter wallpAdapter;
-    public List<Hit> hit= new ArrayList<>();
     public RecyclerView recyclerView;
     public NetworkUtilities networkUtilities;
     public EndlessRecyclerViewScrollListener scrollListener;

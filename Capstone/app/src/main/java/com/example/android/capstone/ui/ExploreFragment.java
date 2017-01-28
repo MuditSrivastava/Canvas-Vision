@@ -20,7 +20,6 @@ import java.util.List;
 public class ExploreFragment extends Fragment {
 
     public RecyclerView recyclerView;
-    private GridLayoutManager gridLayoutManager;
     public List<Category> categoryList= new ArrayList<>();
     public ExploreAdapter exploreAdapter;
     public int column_no;
