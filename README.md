@@ -25,8 +25,8 @@ Main features of app:
 <img width="30%" src="https://github.com/MuditSri-2908/Canvas-Vison/blob/master/Screenshots/device-2017-01-29-032838.png"/>
 <img width="30%" src="https://github.com/MuditSri-2908/Canvas-Vison/blob/master/Screenshots/device-2017-01-29-032714.png"/>
 <img width="30%" src="https://github.com/MuditSri-2908/Canvas-Vison/blob/master/Screenshots/device-2017-01-29-033127.png"/>
-<img width="30%" src="https://github.com/MuditSri-2908/Canvas-Vison/blob/master/Screenshots/device-2017-01-29-035812.png"/>
-<img width="30%" src="https://github.com/MuditSri-2908/Canvas-Vison/blob/master/Screenshots/device-2017-01-29-035905.png"/>
+<img width="90%" src="https://github.com/MuditSri-2908/Canvas-Vison/blob/master/Screenshots/device-2017-01-29-035812.png"/>
+<img width="90%" src="https://github.com/MuditSri-2908/Canvas-Vison/blob/master/Screenshots/device-2017-01-29-035905.png"/>
   
  ## Libraries Used
  [Picasso](http://square.github.io/picasso/)
