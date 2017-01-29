@@ -42,7 +42,7 @@ Main features of app:
  [Google AdMob](https://www.google.co.in/admob/)
  
  ## Powered By
- <img width="50%" src="https://pixabay.com/static/img/logo.png"/>
+ [<img width="50%" src="https://pixabay.com/static/img/logo.png"/>](https://pixabay.com/)
  
  ## License
 
