@@ -1,4 +1,4 @@
-# <img width="10%" src="https://github.com/MuditSri-2908/Canvas-Vison/blob/master/Capstone/app/src/main/res/drawable/ic_launcher.png"/>  Capstone-Vison
+# <img width="10%" src="https://github.com/MuditSri-2908/Canvas-Vison/blob/master/Capstone/app/src/main/res/drawable/ic_launcher.png"/>  Capstone-Vision
 Make the most of your display with beautiful wallpapers (provided by:- Pixabay) .
 Sift through hundreds of wallpaper and download them on a single click.
 It's easy to use, with stunning UI.
