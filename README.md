@@ -19,7 +19,7 @@ Main features of app:
 * My Collection displays your downloaded photos online and offline 
 * Widget on your home screen shows the downloaded photos online and offline
  
- ## Screenshots
+## Screenshots
 <img width="30%" src="https://github.com/MuditSri-2908/Canvas-Vison/blob/master/Screenshots/device-2017-01-29-032054.png"/>
 <img width="30%" src="https://github.com/MuditSri-2908/Canvas-Vison/blob/master/Screenshots/device-2017-01-29-031710.png"/>
 <img width="30%" src="https://github.com/MuditSri-2908/Canvas-Vison/blob/master/Screenshots/device-2017-01-29-032838.png"/>
@@ -28,7 +28,7 @@ Main features of app:
 <img width="90%" src="https://github.com/MuditSri-2908/Canvas-Vison/blob/master/Screenshots/device-2017-01-29-035812.png"/>
 <img width="90%" src="https://github.com/MuditSri-2908/Canvas-Vison/blob/master/Screenshots/device-2017-01-29-035905.png"/>
   
- ## Libraries Used
+## Libraries Used
  [Picasso](http://square.github.io/picasso/)
 
  [Retrofit](http://square.github.io/retrofit/)
