@@ -41,10 +41,10 @@ Main features of app:
  
  [Google AdMob](https://www.google.co.in/admob/)
  
- ## Powered By
+## Powered By
  [<img width="50%" src="https://pixabay.com/static/img/logo.png"/>](https://pixabay.com/)
  
- ## License
+## License
 
 ```
 Copyright 2016 Mudit Srivastava
