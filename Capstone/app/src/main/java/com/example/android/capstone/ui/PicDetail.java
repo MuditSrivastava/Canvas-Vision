@@ -1,13 +1,17 @@
 package com.example.android.capstone.ui;
 
+import android.Manifest;
 import android.app.DownloadManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -52,6 +56,7 @@ public class PicDetail extends AppCompatActivity {
     public boolean isCallerCollection =false;
     private Menu menu;
     private File file;
+    private int permissionCheck1,MY_PERMISSIONS_REQUEST_WRITE_STORAGE=102;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +67,9 @@ public class PicDetail extends AppCompatActivity {
         tag_title=(TextView)findViewById(R.id.toolbar_title);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        permissionCheck1 = ContextCompat.checkSelfPermission(this,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE);
+
         if (getIntent().hasExtra(EXTRA_PIC)) {
             hit = getIntent().getParcelableExtra(EXTRA_PIC);
         } else {
@@ -148,17 +156,22 @@ public class PicDetail extends AppCompatActivity {
         }
 
         if (item.getItemId() == R.id.action_down) {
-            if(!fileExistance()) {
-                String uri=hit.getWebformatURL();
-                uri=uri.replaceAll("_640","_960");
-                Uri image_uri = Uri.parse(uri);
-                DownloadData(image_uri);
-                item.setEnabled(false);
 
+            if(permissionCheck1==PackageManager.PERMISSION_GRANTED) {
+                if (!fileExistance()) {
+                    String uri = hit.getWebformatURL();
+                    uri = uri.replaceAll("_640", "_960");
+                    Uri image_uri = Uri.parse(uri);
+                    DownloadData(image_uri);
+                    item.setEnabled(false);
+
+                } else {
+                    Toast toast = Toast.makeText(this, getResources().getString(R.string.image_downloaded), Toast.LENGTH_SHORT);
+                    toast.show();
+                }
             }
             else{
-                Toast toast = Toast.makeText(this,getResources().getString(R.string.image_downloaded), Toast.LENGTH_SHORT);
-                toast.show();
+                checkPermisson();
             }
         }
 
@@ -226,4 +239,14 @@ public class PicDetail extends AppCompatActivity {
         return file.exists();
     }
 
-}
+    public void checkPermisson(){
+
+        if( permissionCheck1!=PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},MY_PERMISSIONS_REQUEST_WRITE_STORAGE);
+        }
+
+        }
+
+    }
+
